@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة عربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        /* ...existing style... */
+
+        /* Added styles for hierarchical menu */
+        .sidebar .nav-item {
+            position: relative; /* Needed for positioning the children menu */
+        }
+
+        .sidebar .main-item {
+            cursor: pointer;
+        }
+
+        /* Add transition to the toggle icon */
+        .sidebar .main-item .toggle-icon {
+            transition: transform 0.3s ease; /* Smooth transition over 0.3 seconds */
+        }
+
+        .sidebar .children-menu {
+            /* Default state: hidden and positioned relative to parent LI */
+            position: absolute;
+            left: -200px; /* Example: 200px to the left */
+            width: 200px; /* Example width */
+            z-index: 1050; /* Ensure it's above other content */
+            top: 0; /* Position at the top of the parent LI */
+            /* Changed display: none to visibility: hidden for animation */
+            visibility: hidden; /* Initially hidden */
+            /* Added for animation */
+            opacity: 0;
+            transform: translateY(-10px); /* Start slightly above */
+            /* Removed transition from default state */
+        }
+
+        /* State when the menu is open */
+        .nav-item.is-open .children-menu {
+            position: fixed; /* Position relative to the viewport */
+            /* Changed display: block to visibility: visible for animation */
+            visibility: visible; /* Show the menu */
+            /* Top and Right will be set by JavaScript */
+            /* Added for animation */
+            opacity: 1;
+            transform: translateY(0); /* End at normal position */
+            /* Added transition only to the open state */
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out; /* Animate opacity, position, and visibility */
+        }
+
+        /* Rotate the toggle icon when the menu is open */
+        .nav-item.is-open .main-item .toggle-icon {
+            transform: rotate(180deg); /* Rotate 180 degrees */
+        }
+
+        #header-title h3 {
+            color: #291a2d;
+        }
+
+        #contentHeader {
+            background-color: #F9F6F6; /* Set background color for content header */
+        }
+
+        #searchBoxContainer {
+            color: #874b50; /* Set default text color for the container */
+        }
+
+        #searchBox {
+            background-color: #f7f7f7; /* Needed for absolute positioning of the icon */
+            position: relative; /* Ensure children are positioned relative to this */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Vertically align items */
+            padding-right: 1rem; /* Add padding on the right */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover and focus */
+        }
+
+        #searchBox:hover {
+            background-color: #e9e9e9; /* Grey color on hover */
+        }
+
+        #searchBox:focus-within {
+            background-color: #ffffff; /* Change background on focus */
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Add box shadow on focus */
+        }
+
+
+        #searchBox input {
+             /* Remove default background */
+            background-color: transparent;
+            flex-grow: 1; /* Allow input to take available space */
+            padding-left: 2.5rem; /* Increase left padding for icon and hint */
+            padding-right: 0; /* Remove default right padding */
+            border: none; /* Remove default border */
+            color: inherit; /* Inherit color from parent */
+        }
+
+        #searchBox input::placeholder {
+            color: #874b50; /* Set placeholder color */
+            opacity: 1; /* Ensure placeholder is not transparent */
+        }
+
+
+        #searchBox input:focus {
+            box-shadow: none; /* Remove default input focus outline */
+            border-color: transparent; /* Ensure border remains transparent */
+        }
+
+        #searchBox .bi-search {
+            left: 1rem; /* Position the search icon */
+            z-index: 2; /* Ensure icon is above input */
+            color: inherit !important; /* Inherit color and override Bootstrap's text-muted */
+        }
+
+        #searchBox .shortcut-hint {
+            position: absolute;
+            left: 2.5rem; /* Position hint to the right of the icon */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #874b50; /* Hint color */
+            font-size: 0.8rem; /* Smaller font size for hint */
+            pointer-events: none; /* Ensure hint doesn't interfere with clicks */
+            z-index: 1; /* Ensure hint is below input but above container */
+            transition: opacity 0.2s ease-out; /* Smooth transition for hiding */
+        }
+
+        #searchBox input:focus + .shortcut-hint {
+            opacity: 0; /* Hide hint when input is focused */
+        }
+
+        #searchBoxContainer .btn {
+            color: #874b50; /* Set default color for buttons in the container */
+            background-color: #f7f7f7; /* Default background color */
+            transition: background-color 0.3s ease; /* Add transition for hover */
+            width: 38px; /* Set fixed width */
+            height: 38px; /* Set fixed height */
+            padding: 0 !important; /* Ensure no padding */
+        }
+
+        #searchBoxContainer .btn:hover {
+             background-color: #e9e9e9; /* Grey color on hover */
+             color: #6a3a3d; /* Optional: Darker color on hover */
+        }
+
+        #contentHeader .text-muted {
+            color: #c8a78c !important; /* Set dynamic date/time color */
+        }
+
+        #current-datetime {
+            direction: ltr; /* Set text direction to Left-to-Right */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: #e7e7e7;">
+        <div class="d-flex flex-row ">
+            <nav class="sticky-top col-md-3 col-xl-2 d-none d-md-block sidebar p-2 vh-100 overflow-auto"  style="scrollbar-width: none; width: 280px;">
+                <div class="rounded-4 text-white" style="background-color: #331D1F;">
+                    <!-- Organization Logo -->
+                    <div class="p-3 d-flex justify-content-center">
+                        <img src="logo2.svg" alt="Organization Logo" class="img-fluid rounded">
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="d-flex justify-content-between align-items-center p-2 m-2 bg-transparent rounded-4" style="border: 1px solid rgba(255, 255, 255, 0.05);">
+                        <div class="d-flex align-items-center">
+                            <img src="profilepic.jpg" alt="User Profile" class="rounded-circle ms-2">
+                            <div>
+                                <h6 class="mb-0">محمد جلال</h6>
+                                <small class="text-white-50">اخر تحديث 1/1/2025</small>
+                            </div>
+                        </div>
+                        <a href="signin.html" class="text-white"><img src="logout.svg" alt="log out icon" class="img-fluid"></a>
+                    </div>
+
+                    <!-- Chart Canvas -->
+                    <div class="p-3 p-2 m-3 rounded-4 text-success" style="border: 1px solid #868384; background-color: #10090a;" id="chart-container">
+                        <div class="row text-success" id="chart-area"  style="font-size: x-small;">
+
+                            <div class="col d-flex align-items-center">
+                                <div class="p-0 ms-2">
+                                    <div class="mb-0">4.2%</div>
+                                    <div class="">منذ شهر</div>
+                                </div>
+                                <div class="text-end">
+                                    <i class="bi bi-arrow-up-circle fs-5"></i>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-12 text-center p-0">KPI</div>
+                                    <div class="col-12 text-center">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <span class="text-white user-select-none" id="achieved-span" style="cursor: pointer;">المــحــــــــقــق</span>
+                                            <img src="swap.svg" alt="swap icon" class="img-fluid mx-2 user-select-none" style="cursor: pointer;" id="swap-icon">
+                                            <span class="text-secondary user-select-none" id="target-span" style="cursor: pointer;">المستهدف</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="canvas-wrapper" style="min-height: 130px; display: flex; align-items: center; justify-content: center;">
+                            <canvas id="myChart" style="height: 130px; width: 100%;"></canvas>
+                        </div>
+
+
+                    </div>
+
+                    <hr class="m-3">
+
+                    <ul class="nav flex-column p-0 m-3" id="sidebar-menu" style="font-size: small;">
+                        <!-- Sidebar items will be inserted here by JavaScript -->
+                    </ul>
+
+                </div>
+            </nav>
+            <main role="main" class="col px-4 text-black">
+                <div class="container mt-5">
+                    <!-- Header Section -->
+                    <div class="row flex-row mb-3 bg-white rounded-4 p-3 d-flex align-items-center justify-content-between">
+                        <div class="col-auto" id="header-title">
+                            <h3 class="mb-0">صباح الخير, محمد 👋🏻</h3>
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-end" id="searchBoxContainer">
+                            <!-- Search Box Container -->
+                            <!-- Removed input-group and button, added relative positioning container -->
+                            <div class="rounded-2 me-3" style="max-width: 300px; width: 100%;" id="searchBox">
+                                <!-- Added ps-4 for padding-left to make space for the icon -->
+                                <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted" style="left: 1rem; pointer-events: none;"></i>
+                                <input type="text" class="form-control bg-transparent" placeholder="بحث..." aria-label="Search">
+                                <span class="shortcut-hint">/ ⌘</span>
+                            </div>
+                            <!-- Notification Icon Button -->
+                            <button class="btn rounded-2 border-0 mx-3 d-flex align-items-center justify-content-center" aria-label="Notifications">
+                                <i class="bi bi-bell-fill fs-5"></i>
+                            </button>
+                            <!-- Light/Dark Mode Toggle Button -->
+                            <button class="btn rounded-2 border-0 d-flex align-items-center justify-content-center" aria-label="Toggle light/dark mode">
+                                <i class="bi bi-sun fs-5"></i> <!-- Or bi-moon for dark mode -->
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="row mb-3">
+                        <div class="col-12 bg-white rounded-4 p-0">
+                            <div class="d-flex align-items-center flex-row rounded-top-4 p-3" id="contentHeader">
+                                <div class="d-flex flex-column col-2 align-items-center">
+                                    <img src="logo3.svg" alt="Logo 3" class="img-fluid mb-2" style="max-height: 50px;">
+                                    <small class="text-muted" id="current-datetime">10:30 AM || 26 May 2024</small> <!-- Replace with dynamic date/time if needed -->
+                                </div>
+                                <div class="d-flex flex-row flex-wrap justify-content-between w-100" style="font-weight: bold;">
+                                    <!-- Repeat this block 6 times -->
+                                    <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
+                                        <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
+                                        <span class="text-dark">PKD 4.2%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
+                                        <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
+                                        <span class="text-dark">PKD 4.2%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
+                                        <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
+                                        <span class="text-dark">PKD 4.2%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
+                                        <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
+                                        <span class="text-dark">PKD 4.2%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
+                                        <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
+                                        <span class="text-dark">PKD 4.2%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
+                                        <span class="text-dark">PKD 4.2%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="placeholder"></div>
+                        </div>
+                    </div>
+
+                    <!-- Details Section -->
+                    <div class="row d-flex align-items-stretch vh-100">
+                        <div class="col-12 bg-white rounded-4 p-3">
+
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebarMenu = document.getElementById("sidebar-menu");
+            // Updated menuItems with children
+            const menuItems = [
+                { text: "الرئيسية", link: "#", icon: "house", active: true, children: [] },
+                { text: "المشاريع", link: "#", icon: "briefcase", children: [
+                    { text: "مشروع أ", link: "#" },
+                    { text: "مشروع ب", link: "#" },
+                    { text: "مشروع ج", link: "#" }
+                ]},
+                { text: "PMO", link: "#", icon: "clipboard", children: [
+                    { text: "تقرير 1", link: "#" },
+                    { text: "تقرير 2", link: "#" }
+                ]},
+                { text: "إدارة الاملاك", link: "#", icon: "building", children: [
+                    { text: "عقار 1", link: "#" },
+                    { text: "عقار 2", link: "#" }
+                ]},
+                { text: "خدمة العملاء", link: "#", icon: "person-lines-fill", children: [] },
+                { text: "التطوير والاستثمار", link: "#", icon: "graph-up", children: [
+                    { text: "فرصة 1", link: "#" },
+                    { text: "فرصة 2", link: "#" },
+                    { text: "فرصة 3", link: "#" }
+                ]},
+                { text: "المواد التسويقية", link: "#", icon: "megaphone", children: [] },
+                { text: "المشتريات", link: "#", icon: "briefcase", children: [
+                    { text: "طلب شراء 1", link: "#" },
+                    { text: "طلب شراء 2", link: "#" }
+                ]},
+                { text: "المعاملات الحكومية", link: "#", icon: "bank", children: [] },
+                { text: "التقارير والاحصائيات", link: "#", icon: "bar-chart", children: [
+                    { text: "تقرير مبيعات", link: "#" },
+                    { text: "تقرير أداء", link: "#" }
+                ]},
+                { text: "الاعدادات", link: "#", icon: "gear", children: [] }
+            ];
+
+            let sidebarHTML = "";
+            menuItems.forEach((item, index) => {
+                const activeClass = item.active ? " active" : "";
+                const hasChildren = item.children && item.children.length > 0;
+                // Use bi-chevron-right for closed (>) and bi-chevron-left for open (<)
+                // Added me-2 class to toggle icon
+                const toggleIconHTML = hasChildren ? '<i class="bi bi-chevron-right toggle-icon me-auto ms-2"></i>' : ''; // Changed ms-2 me-auto to me-2 ms-auto for RTL
+
+                sidebarHTML += `
+                    <li class="nav-item${hasChildren ? ' has-children' : ''}">
+                        <div class="nav-link${activeClass} px-0 text-white main-item d-flex align-items-center py-2" data-index="${index}">
+                            <i class="bi bi-${item.icon} ms-2 fs-6" aria-hidden="true"></i>
+                            ${item.text}
+                            ${toggleIconHTML}
+                        </div>
+                `;
+
+                if (hasChildren) {
+                    sidebarHTML += `
+                        <div class="children-menu rounded p-4" style="border: 1px solid #868384; background-color: #f5f5f5;">
+                            <ul class="nav flex-column">
+                    `;
+                    item.children.forEach(child => {
+                        sidebarHTML += `
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="${child.link}">${child.text}</a>
+                                </li>
+                        `;
+                    });
+                    sidebarHTML += `
+                            </ul>
+                        </div>
+                    `;
+                }
+
+                sidebarHTML += `</li>`;
+            });
+
+            sidebarMenu.innerHTML = sidebarHTML;
+
+            // Function to close all children menus
+            function closeAllChildrenMenus() {
+                 document.querySelectorAll('.nav-item.is-open').forEach(openItem => {
+                    openItem.classList.remove('is-open');
+                    const toggleIcon = openItem.querySelector('.toggle-icon');
+                    if (toggleIcon) {
+                        toggleIcon.classList.remove('bi-chevron-left');
+                        toggleIcon.classList.add('bi-chevron-right');
+                    }
+                    // Optional: Reset inline styles if needed, though removing is-open should hide it
+                    const childrenMenu = openItem.querySelector('.children-menu');
+                     if (childrenMenu) {
+                         childrenMenu.style.top = '';
+                         childrenMenu.style.right = ''; // Or left depending on direction
+                     }
+                });
+            }
+
+
+            // Add event listeners after the HTML is rendered
+            document.querySelectorAll('.main-item').forEach(mainItem => {
+                mainItem.addEventListener('click', function (event) {
+                    // Prevent the default link behavior if it's a parent item
+                    event.preventDefault();
+
+                    const parentLi = this.closest('.nav-item');
+                    const childrenMenu = parentLi.querySelector('.children-menu');
+                    const toggleIcon = this.querySelector('.toggle-icon');
+
+                    // Check if this item has children
+                    if (!childrenMenu) {
+                        // If no children menu, and it has a link, navigate
+                        const link = this.querySelector('a');
+                        if (link) {
+                             window.location.href = link.href;
+                        }
+                        return; // Exit if no children menu
+                    }
+
+                    const isOpening = !parentLi.classList.contains('is-open');
+
+                    // Close all other open menus first
+                    closeAllChildrenMenus();
+
+                    // Toggle the clicked menu
+                    if (isOpening) {
+                        parentLi.classList.add('is-open'); // Add class to show and position fixed
+
+                        // Calculate and set position
+                        const mainItemRect = this.getBoundingClientRect();
+                        const sidebarRect = document.querySelector('.sidebar').getBoundingClientRect(); // Get sidebar position
+
+                        // Position the menu to the left of the main item
+                        // The right edge of the menu should align with the left edge of the main item
+                        const menuWidth = childrenMenu.offsetWidth; // Get the calculated width
+                        const rightPosition = window.innerWidth - mainItemRect.left; // Distance from viewport right to main item left
+
+                        childrenMenu.style.top = `${mainItemRect.top}px`;
+                        childrenMenu.style.right = `${rightPosition}px`;
+                        childrenMenu.style.left = 'auto'; // Ensure left is auto when using right
+
+
+                    }
+                });
+            });
+
+            // Add event listener to close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                let targetElement = event.target; // Clicked element
+                let isInsideSidebarItemWithChildren = false;
+                // Check if the click target or any of its parents is a sidebar item with children OR the children menu itself
+                while (targetElement) {
+                    if (targetElement.classList && (targetElement.classList.contains('main-item') || targetElement.classList.contains('children-menu'))) {
+                         // Clicked inside a main item or the children menu
+                        isInsideSidebarItemWithChildren = true;
+                        break;
+                    }
+                    // Also check if the click is inside the parent LI that contains the menu
+                    if (targetElement.classList && targetElement.classList.contains('nav-item') && targetElement.classList.contains('has-children')) {
+                         isInsideSidebarItemWithChildren = true; // Clicked inside the parent LI container
+                         break;
+                    }
+                    targetElement = targetElement.parentElement;
+                }
+
+                // If the click was outside any relevant sidebar element
+                if (!isInsideSidebarItemWithChildren) {
+                    closeAllChildrenMenus(); // Close all open menus
+                }
+            });
+
+             // Close menus on window resize to recalculate position
+             window.addEventListener('resize', closeAllChildrenMenus);
+        });
+
+        function updateChartDisplay(showTarget) {
+            const achievedSpan = document.getElementById('achieved-span');
+            const targetSpan = document.getElementById('target-span');
+            const chartArea = document.getElementById('chart-area');
+
+            if (showTarget) {
+                achievedSpan.classList.remove('text-white');
+                achievedSpan.classList.add('text-secondary');
+                targetSpan.classList.remove('text-secondary');
+                targetSpan.classList.add('text-white');
+                chartArea.classList.remove('text-success');
+                chartArea.classList.add('text-danger');
+            } else {
+                achievedSpan.classList.remove('text-secondary');
+                achievedSpan.classList.add('text-white');
+                targetSpan.classList.remove('text-white');
+                targetSpan.classList.add('text-secondary');
+                chartArea.classList.remove('text-danger');
+                chartArea.classList.add('text-success');
+            }
+        }
+
+        document.getElementById('swap-icon').addEventListener('click', function () {
+            const targetSpan = document.getElementById('target-span');
+            updateChartDisplay(!targetSpan.classList.contains('text-white'));
+        });
+        document.getElementById('achieved-span').addEventListener('click', () => updateChartDisplay(false));
+        document.getElementById('target-span').addEventListener('click', () => updateChartDisplay(true));
+
+        // Sample Chart (Replace with your actual chart data and configuration)
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line', // or 'line', 'pie', etc.
+            data: {
+                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس'],
+                datasets: [{
+                    label: 'مبيعات',
+                    data: [6, 6, 1, 5, 6, 0, 5, 6],
+                    fill: false,
+                    borderColor: '#e3ae36',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: { display: false, labels: { color: 'white' } },
+                    tooltip: { enabled: true },
+                    title: {
+                        display: true,
+                        color: 'white',
+                        text: '65%',
+                        align: 'start',
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        },
+                        font: {
+                            size: 25,
+                        }
+                    }
+                },
+                scales: {
+                    x: { display: false },
+                    y: { display: false, beginAtZero: true }
+                }
+            }
+        });
+
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+
+            const day = now.getDate();
+            const formattedDay = day < 10 ? '0' + day : day;
+
+            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                                "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            const month = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+
+            const dateTimeString = `${hours}:${formattedMinutes} ${ampm} || ${formattedDay} ${month} ${year}`;
+            console.log(`Current Date and Time: ${dateTimeString}`);
+
+            document.getElementById('current-datetime').textContent = dateTimeString;
+        }
+
+        // Update date and time initially
+        updateDateTime();
+
+    </script>
+</body>
+</html>
