@@ -38,10 +38,10 @@ git remote add origin https://github.com/99zarka/meras.git >nul 2>&1
 git remote set-url origin https://github.com/99zarka/meras.git
 
 echo.
-echo Pulling latest changes from remote...
-git pull origin main
+echo Pulling latest changes from remote (allowing unrelated histories)...
+git pull origin main --allow-unrelated-histories
 if %errorlevel% neq 0 (
-    echo Error during pull. You might have merge conflicts. Resolve them manually and run the script again.
+    echo Error during pull. You might still have merge conflicts after allowing unrelated histories. Resolve them manually and run the script again.
     pause
     exit /b 1
 )
