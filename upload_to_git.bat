@@ -7,3 +7,4 @@ git commit -m "%commit_message%"
 git branch -M main
 git remote set-url origin https://github.com/99zarka/meras.git
 git push -u origin main
+pause
