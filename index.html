@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Add Poppins font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -160,6 +163,17 @@
             direction: ltr; /* Set text direction to Left-to-Right */
         }
 
+        .rounded-shadow {
+            background: #FFFFFF;
+            border: 1px solid #FEFEFE;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            box-shadow: 0px 10px 80px rgba(226, 236, 249, 0.5);
+            border-radius: 16px;
+        }
+
 
     </style>
 </head>
@@ -250,7 +264,7 @@
                                 <i class="bi bi-bell-fill fs-5"></i>
                             </button>
                             <!-- Light/Dark Mode Toggle Button -->
-                            <button class="btn rounded-2 border-0 d-flex align-items-center justify-content-center" aria-label="Toggle light/dark mode">
+                            <button class="btn rounded-2 border-0 d-flex align-items-center justify-content-center bg-transparent" aria-label="Toggle light/dark mode">
                                 <i class="bi bi-sun fs-5"></i> <!-- Or bi-moon for dark mode -->
                             </button>
                         </div>
@@ -286,13 +300,52 @@
                                         <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
                                         <span class="text-dark">PKD 4.2%</span>
                                     </div>
-                                    <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
                                         <i class="bi bi-arrow-up-circle fs-5 text-success ms-2"></i>
                                         <span class="text-dark">PKD 4.2%</span>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="placeholder"></div>
+
+
+
+                        </div>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="row mb-3 vh-100">
+                        <div class="col-12 bg-white rounded-4 p-0">
+                    
+                            <div class="row p-3 my-3">
+                                <div class="col-12 col-lg-6">
+                                    <!-- Add selector above chart -->
+                                    <div class="position-relative rounded-shadow">
+                                        <div class="position-absolute" style="top: 30px; left: 20px; z-index: 1;">
+                                            <select class="form-select" 
+                                                style="width: auto; 
+                                                       color: #5E6E74;
+                                                       background-color: #f7f7f7; 
+                                                       border-radius: 10px;
+                                                       border: none;
+                                                       background-image: url('data:image/svg+xml,%3Csvg width=%2211%22 height=%226%22 viewBox=%220 0 11 6%22 fill=%22none%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M0.552887 0.687744L5.32523 5.32266L10.0976 0.687744%22 stroke=%22%235E6E74%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E');
+                                                       background-position: left 0.75rem center;
+                                                       padding-left: 2rem;
+                                                       padding-right: 1rem;">
+                                                <option value="monthly" selected>شهري</option>
+                                                <option value="quarterly" disabled>ربع سنوي</option>
+                                            </select>
+                                        </div>
+                                        <div id="canvas2-wrapper" style="min-height: 240px; display: flex; align-items: center; justify-content: center;">
+                                            <canvas id="myChart2" style="height: 240px; width: auto;"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="placeholder col-12 col-lg-6 bg-black"></div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -555,6 +608,121 @@
                 }
             }
         });
+
+        // New Column Chart for myChart2
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+                datasets: [{
+                    label: 'الأرباح الشهرية',
+                    data: [20, 25, 31, 23, 17, 23, 25, 35, 31, 26, 20, 29], // Changed to percentage values
+                    backgroundColor: '#E7E7E7', // Set default bar color
+                    borderColor: '#E7E7E7', // Set default border color
+                    hoverBackgroundColor: '#884B50', // Set hover color
+                    hoverBorderColor: '#884B50', // Set hover border color
+                    borderWidth: 1,
+                    borderRadius: { 
+                        topLeft: 8,
+                        topRight: 8,
+                        bottomLeft: 8,
+                        bottomRight: 8
+                    },
+                    borderSkipped: false, // Add this line to ensure all sides including bottom are rounded
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Allow height to be controlled by CSS
+                layout: {
+                    padding: {
+                        top: 60 // Increased padding at the top to make space for the titles
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        display: false, // Hide Y-axis
+                        ticks: {
+                            color: 'black' // Set Y-axis label color to black
+                        },
+                        grid: {
+                            display: false // Hide Y-axis grid lines
+                        }
+                    },
+                    x: {
+                        display: true, // Show X-axis
+                        ticks: {
+                            color: '#5E6E74', // Set X-axis label color
+                            autoSkip: false, // Prevent skipping labels
+                            maxRotation: 0, // Ensure labels are not rotated
+                            minRotation: 0, // Ensure labels are not rotated
+                            font: { // Add font configuration
+                                family: 'Poppins', // Set font family to Poppins
+                                size: 10 // Add font size (default is 12)
+                            }
+                        },
+                         grid: {
+                            display: false // Hide X-axis grid line color (light black)
+                        },
+                        border: { // Add border configuration
+                            color: 'transparent' // Make X-axis line transparent
+                        },
+                        categoryPercentage: 0.8, // Adjust category width (space for bar + gap)
+                        barPercentage: 0.6 // Adjust bar width relative to category width
+                    }
+                },
+                 plugins: {
+                    legend: {
+                        display: false // Hide legend
+                    },
+                    tooltip: {
+                        enabled: true,
+                        position: 'average',
+                        mode: 'point',
+                        intersect: false,
+                        xAlign: 'center',
+                        yAlign: 'bottom',
+                        callbacks: {
+                            title: () => '', // Remove title
+                            label: function(context) {
+                                return context.parsed.y + '%';
+                            }
+                        }
+                    }
+                }
+            },
+            plugins: [
+                {
+                    id: 'customTitle',
+                    beforeDraw(chart) {
+                        const { ctx, chartArea } = chart;
+                        if (!chartArea) return;
+
+                        ctx.save();
+                        ctx.textAlign = 'right';
+                        ctx.textBaseline = 'top';
+                        ctx.direction = 'rtl'; // Set text direction for Arabic
+
+                        // Draw the main title
+                        ctx.font = 'bold 20px Tajawal, sans-serif';
+                        ctx.fillStyle = '#000';
+                        // Position slightly inside the right edge, above the chart area
+                        ctx.fillText('نظرة عامة', chartArea.right - 8, chartArea.top - 50);
+
+                        // Draw the subtitle
+                        ctx.font = '14px Tajawal, sans-serif';
+                        ctx.fillStyle = '#5E6E74';
+                         // Position below the main title
+                        ctx.fillText('الأرباح الشهرية', chartArea.right - 8, chartArea.top - 20);
+
+                        ctx.restore();
+                    }
+                }
+            ]
+        });
+
 
         // Function to update date and time
         function updateDateTime() {
