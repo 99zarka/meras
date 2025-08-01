@@ -154,6 +154,7 @@ export function initializeSidebar() {
                  childrenMenu.style.top = '';
                  childrenMenu.style.right = '';
                  childrenMenu.style.transform = '';
+                 childrenMenu.style.zIndex = '1005';
              }
         });
     }
@@ -228,14 +229,19 @@ export function initializeSidebar() {
     window.addEventListener('scroll', () => {
         const sidebar = document.querySelector('.sidebar');
         let newPosition = window.scrollY + window.innerHeight - sidebar.offsetHeight;
+        /* console.log(sidebar.dataset.position,"old.position");
         console.log(newPosition,"new pos");
-        
         console.log(sidebar.offsetHeight,"sidebar.offsetHeight");
         console.log(window.scrollY,"scrollY");
         console.log(window.innerHeight,"innerHeight");
-        console.log(window.scrollY + window.innerHeight,"scrollY + innerHeight");
+        console.log(window.scrollY + window.innerHeight,"scrollY + innerHeight"); */
         let isScrollDown = (newPosition > sidebar.dataset.position)? true : false;
-        if (isScrollDown && window.scrollY > sidebar.offsetHeight - window.innerHeight ) {
+        if(sidebar.offsetHeight< window.innerHeight){
+            sidebar.style.position = 'sticky';
+            sidebar.style.top = `${0}px`;
+            sidebar.dataset.position = window.scrollY;
+        }
+        else if (isScrollDown && window.scrollY > sidebar.offsetHeight - window.innerHeight) {
             sidebar.style.position = 'sticky';
             sidebar.style.top = `${window.innerHeight-sidebar.offsetHeight}px`;
             sidebar.dataset.position = newPosition;
@@ -251,17 +257,16 @@ export function initializeSidebar() {
             sidebar.style.position = 'relative';
             sidebar.style.top = `${sidebar.dataset.position}px`;
             console.log("Scrolling else");
-            const parentLi = document.querySelector('.is-open');
-            if(parentLi){
-                const childrenMenu = parentLi.querySelector('.children-menu');
-                childrenMenu.style.top = `${parentLi.getBoundingClientRect().top}px`;
-                setTimeout(() => {
-                    childrenMenu.style.top = `${parentLi.getBoundingClientRect().top}px`;
-                }, 30);
 
-            }
-            
-
+        }
+        const childrenMenu = document.querySelector('.is-open .children-menu');
+        if (childrenMenu) {
+            childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
+            childrenMenu.style.zIndex = '1005';
+            setTimeout(() => {
+                childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
+                childrenMenu.style.zIndex = '1005';
+            }, 30);
         }
     });
 }

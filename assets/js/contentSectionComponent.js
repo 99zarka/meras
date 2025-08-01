@@ -50,8 +50,8 @@ export function getContentSectionHTML() {
                 <div class="row p-3 my-3">
                     <div class="col-12 col-lg-6">
                         <!-- Add selector above chart -->
-                        <div class="position-relative rounded-shadow">
-                            <div class="position-absolute" style="top: 30px; left: 20px; z-index: 1;">
+                        <div class="rounded-shadow">
+                            <div class="" style="top: 30px; left: 20px;">
                                 <select class="form-select" 
                                     style="width: auto; 
                                            color: #5E6E74;
