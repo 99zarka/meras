@@ -67,82 +67,62 @@ export function getSidebarHTML() {
     `;
 }
 
+import { menuItems } from '../data/menuItems.js';
+
 export function initializeSidebar() {
     const sidebarMenu = document.getElementById("sidebar-menu");
-    const menuItems = [
-        { text: "الرئيسية", link: "#", icon: "house", active: true, children: [] },
-        { text: "المشاريع", link: "#", icon: "briefcase", children: [
-            { text: "مشروع أ", link: "#" },
-            { text: "مشروع ب", link: "#" },
-            { text: "مشروع ج", link: "#" }
-        ]},
-        { text: "PMO", link: "#", icon: "clipboard", children: [
-            { text: "تقرير 1", link: "#" },
-            { text: "تقرير 2", link: "#" }
-        ]},
-        { text: "إدارة الاملاك", link: "#", icon: "building", children: [
-            { text: "عقار 1", link: "#" },
-            { text: "عقار 2", link: "#" }
-        ]},
-        { text: "خدمة العملاء", link: "#", icon: "person-lines-fill", children: [] },
-        { text: "التطوير والاستثمار", link: "#", icon: "graph-up", children: [
-            { text: "فرصة 1", link: "#" },
-            { text: "فرصة 2", link: "#" },
-            { text: "فرصة 3", link: "#" }
-        ]},
-        { text: "المواد التسويقية", link: "#", icon: "megaphone", children: [] },
-        { text: "المشتريات", link: "#", icon: "briefcase", children: [
-            { text: "طلب شراء 1", link: "#" },
-            { text: "طلب شراء 2", link: "#" }
-        ]},
-        { text: "المعاملات الحكومية", link: "#", icon: "bank", children: [] },
-        { text: "التقارير والاحصائيات", link: "#", icon: "bar-chart", children: [
-            { text: "تقرير مبيعات", link: "#" },
-            { text: "تقرير أداء", link: "#" }
-        ]},
-        { text: "الاعدادات", link: "#", icon: "gear", children: [] }
-    ];
 
-    let sidebarHTML = "";
-    menuItems.forEach((item, index) => {
+    const generateMenuHTML = (items) => {
+        return items.map(item => {
+            const hasGrandchildren = item.grandchildren && item.grandchildren.length > 0;
+            const grandchildToggleIconHTML = hasGrandchildren ? '<i class="bi bi-chevron-up toggle-icon me-auto ms-2"></i>' : '';
+            return /*html*/`
+                <li class="nav-item child-nav-item my-1 rounded-2 ${hasGrandchildren ? ' has-grandchildren' : ''}">
+                    <a class="nav-link text-dark d-flex align-items-center fw-bold" href="${item.link}">
+                        ${item.text}
+                        ${grandchildToggleIconHTML}
+                    </a>
+                    ${hasGrandchildren ? /*html*/`
+                        <ul class="nav flex-column grandchildren-menu p-0">
+                            ${item.grandchildren.map(grandchild => /*html*/`
+                                <li class="nav-item col-12">
+                                    <a class="nav-link text-secondary" href="${grandchild.link}">${grandchild.text}</a>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    ` : ''}
+                </li>
+            `;
+        }).join('');
+    };
+
+    const sidebarHTML = menuItems.map((item, index) => {
         const activeClass = item.active ? " active" : "";
         const hasChildren = item.children && item.children.length > 0;
         const toggleIconHTML = hasChildren ? '<i class="bi bi-chevron-right toggle-icon me-auto ms-2"></i>' : '';
 
-        sidebarHTML += `
+        return /*html*/`
             <li class="nav-item${hasChildren ? ' has-children' : ''}">
                 <div class="nav-link${activeClass} px-0 text-white main-item d-flex align-items-center py-2" data-index="${index}">
                     <i class="bi bi-${item.icon} ms-2 fs-6" aria-hidden="true"></i>
                     ${item.text}
                     ${toggleIconHTML}
                 </div>
+                ${hasChildren ? /*html*/`
+                    <div class="children-menu rounded p-2">
+                        <ul class="nav flex-column p-0">
+                            ${generateMenuHTML(item.children)}
+                        </ul>
+                    </div>
+                ` : ''}
+            </li>
         `;
-
-        if (hasChildren) {
-            sidebarHTML += `
-                <div class="children-menu rounded p-4" style="border: 1px solid #868384; background-color: #f5f5f5;">
-                    <ul class="nav flex-column">
-            `;
-            item.children.forEach(child => {
-                sidebarHTML += `
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="${child.link}">${child.text}</a>
-                        </li>
-                `;
-            });
-            sidebarHTML += `
-                    </ul>
-                </div>
-            `;
-        }
-
-        sidebarHTML += `</li>`;
-    });
+    }).join('');
 
     sidebarMenu.innerHTML = sidebarHTML;
 
     function closeAllChildrenMenus() {
-         document.querySelectorAll('.nav-item.is-open').forEach(openItem => {
+        document.querySelectorAll('.nav-item.is-open').forEach(openItem => {
             openItem.classList.remove('is-open');
             const toggleIcon = openItem.querySelector('.toggle-icon');
             if (toggleIcon) {
@@ -150,12 +130,19 @@ export function initializeSidebar() {
                 toggleIcon.classList.add('bi-chevron-right');
             }
             const childrenMenu = openItem.querySelector('.children-menu');
-             if (childrenMenu) {
-                 childrenMenu.style.top = '';
-                 childrenMenu.style.right = '';
-                 childrenMenu.style.transform = '';
-                 childrenMenu.style.zIndex = '1005';
-             }
+            if (childrenMenu) {
+                childrenMenu.style.top = '';
+                childrenMenu.style.right = '';
+                childrenMenu.style.transform = '';
+                childrenMenu.style.zIndex = '1005';
+            }
+        });
+        document.querySelectorAll('.has-grandchildren .grandchildren-menu').forEach(menu => {
+            menu.classList.remove('is-expanded');
+            const toggleIcon = menu.closest('.has-grandchildren').querySelector('.toggle-icon');
+            if (toggleIcon) {
+                toggleIcon.classList.remove('is-rotated');
+            }
         });
     }
 
@@ -180,8 +167,6 @@ export function initializeSidebar() {
             if (isOpening) {
                 parentLi.classList.add('is-open');
                 const mainItemRect = this.getBoundingClientRect();
-                const sidebarRect = document.querySelector('.sidebar').getBoundingClientRect();
-                const menuWidth = childrenMenu.offsetWidth;
                 const rightPosition = window.innerWidth - mainItemRect.left;
 
                 childrenMenu.style.top = `${mainItemRect.top}px`;
@@ -222,6 +207,36 @@ export function initializeSidebar() {
         if (!isInsideSidebarItemWithChildren) {
             closeAllChildrenMenus();
         }
+    });
+
+    document.querySelectorAll('.children-menu .has-grandchildren > a').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log(this);
+            
+            const parentLi = this.parentElement;
+            const grandchildrenMenu = parentLi.querySelector('.grandchildren-menu');
+            const toggleIcon = this.querySelector('.toggle-icon');
+
+            if (grandchildrenMenu) {
+                const isOpening = !grandchildrenMenu.classList.contains('is-expanded');
+                // Close all other grandchildren menus
+                document.querySelectorAll('.has-grandchildren .grandchildren-menu').forEach(menu => {
+                    if (menu !== grandchildrenMenu) {
+                        menu.classList.remove('is-expanded');
+                        const otherToggleIcon = menu.closest('.has-grandchildren').querySelector('.toggle-icon');
+                        if (otherToggleIcon) {
+                            otherToggleIcon.classList.remove('is-rotated');
+                        }
+                    }
+                });
+                console.log(isOpening);
+                
+
+                grandchildrenMenu.classList.toggle('is-expanded', isOpening);
+                toggleIcon.classList.toggle('is-rotated', isOpening);
+            }
+        });
     });
 
     window.addEventListener('resize', closeAllChildrenMenus);

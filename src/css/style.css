@@ -24,6 +24,14 @@ body {
     opacity: 0;
     transform: translateY(-10px);
     transition: transform 0.3s ease-in-out;
+    border: 1px solid #E5E5E5;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+    background-color: #FFFFFF;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.sidebar .child-nav-item{
+    background-color: #F5F5F5;
 }
 
 .nav-item.is-open .children-menu {
@@ -35,6 +43,27 @@ body {
 
 .nav-item.is-open .main-item .toggle-icon {
     transform: rotate(180deg);
+}
+
+.children-menu .nav-item.has-grandchildren .toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.children-menu .nav-item.has-grandchildren .toggle-icon.is-rotated {
+    transform: rotate(180deg);
+}
+
+.grandchildren-menu {
+    color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.grandchildren-menu.is-expanded {
+    color:inherit;
+    max-height: 2000px; /* Adjust as needed to accommodate content */
+    transition: max-height 0.5s ease-in-out;
 }
 
 #header-title h3 {

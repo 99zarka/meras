@@ -1,8 +1,9 @@
 export function getHeaderHTML() {
+    const username = "محمد"; // Example username, replace with dynamic data if needed
     return /*html*/`
         <div class="row flex-row mb-3 bg-white rounded-4 p-3 d-flex align-items-center justify-content-between">
             <div class="col-auto" id="header-title">
-                <h3 class="mb-0">صباح الخير, محمد 👋🏻</h3>
+                <h3 class="mb-0">صباح الخير , ${username} 👋🏻</h3>
             </div>
             <div class="col d-flex align-items-center justify-content-end" id="searchBoxContainer">
                 <!-- Search Box Container -->
