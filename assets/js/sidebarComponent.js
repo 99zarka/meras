@@ -262,10 +262,8 @@ export function initializeSidebar() {
         const childrenMenu = document.querySelector('.is-open .children-menu');
         if (childrenMenu) {
             childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
-            childrenMenu.style.zIndex = '1005';
             setTimeout(() => {
                 childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
-                childrenMenu.style.zIndex = '1005';
             }, 30);
         }
     });
