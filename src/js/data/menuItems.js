@@ -1,6 +1,6 @@
 export const menuItems = [
-    { text: "الرئيسية", link: "#", icon: "house", active: true, children: [] },
-    { text: "المشاريع", link: "#", icon: "briefcase", children: [
+    { text: "الرئيسية", link: "#", icon: "home.svg", active: true, children: [] },
+    { text: "المشاريع", link: "#", icon: "projects.svg", children: [
         { text: "سكني", link: "#", grandchildren: [
             { text: "جدايا الرياض", link: "#" },
             { text: "المرسي جدة", link: "#" },
@@ -29,7 +29,7 @@ export const menuItems = [
             { text: "مشروع لوجستي 2", link: "#" }
         ]}
     ]},
-    { text: "PMO", link: "#", icon: "clipboard", children: [
+    { text: "PMO", link: "#", icon: "pmo.svg", children: [
         { text: "تقرير 1", link: "#", grandchildren: [
             { text: "تفاصيل تقرير 1.1", link: "#" },
             { text: "تفاصيل تقرير 1.2", link: "#" }
@@ -39,7 +39,7 @@ export const menuItems = [
             { text: "تفاصيل تقرير 2.2", link: "#" }
         ]}
     ]},
-    { text: "إدارة الاملاك", link: "#", icon: "building", children: [
+    { text: "إدارة الاملاك", link: "#", icon: "management.svg", children: [
         { text: "عقار 1", link: "#", grandchildren: [
             { text: "تفاصيل عقار 1.1", link: "#" },
             { text: "تفاصيل عقار 1.2", link: "#" }
@@ -49,8 +49,8 @@ export const menuItems = [
             { text: "تفاصيل عقار 2.2", link: "#" }
         ]}
     ]},
-    { text: "خدمة العملاء", link: "#", icon: "person-lines-fill", children: [] },
-    { text: "التطوير والاستثمار", link: "#", icon: "graph-up", children: [
+    { text: "خدمة العملاء", link: "#", icon: "customerservice.svg", children: [] },
+    { text: "التطوير والاستثمار", link: "#", icon: "development.svg", children: [
         { text: "فرصة 1", link: "#", grandchildren: [
             { text: "تفاصيل فرصة 1.1", link: "#" },
             { text: "تفاصيل فرصة 1.2", link: "#" }
@@ -63,8 +63,8 @@ export const menuItems = [
             { text: "تفاصيل فرصة 3.2", link: "#" }
         ]}
     ]},
-    { text: "المواد التسويقية", link: "#", icon: "megaphone", children: [] },
-    { text: "المشتريات", link: "#", icon: "briefcase", children: [
+    { text: "المواد التسويقية", link: "#", icon: "marketing.svg", children: [] },
+    { text: "المشتريات", link: "#", icon: "purchases.svg", children: [
         { text: "طلب شراء 1", link: "#", grandchildren: [
             { text: "تفاصيل طلب شراء 1.1", link: "#" },
             { text: "تفاصيل طلب شراء 1.2", link: "#" }
@@ -74,8 +74,8 @@ export const menuItems = [
             { text: "تفاصيل طلب شراء 2.2", link: "#" }
         ]}
     ]},
-    { text: "المعاملات الحكومية", link: "#", icon: "bank", children: [] },
-    { text: "التقارير والاحصائيات", link: "#", icon: "bar-chart", children: [
+    { text: "المعاملات الحكومية", link: "#", icon: "gov.svg", children: [] },
+    { text: "التقارير والاحصائيات", link: "#", icon: "reports.svg", children: [
         { text: "تقرير مبيعات", link: "#", grandchildren: [
             { text: "تفاصيل مبيعات شهرية", link: "#" },
             { text: "تفاصيل مبيعات سنوية", link: "#" }
@@ -85,5 +85,5 @@ export const menuItems = [
             { text: "تفاصيل أداء المشاريع", link: "#" }
         ]}
     ]},
-    { text: "الاعدادات", link: "#", icon: "gear", children: [] }
+    { text: "الاعدادات", link: "#", icon: "settings.svg", children: [] }
 ];

@@ -1,5 +1,6 @@
 body {
     font-family: 'Tajawal', sans-serif;
+    background-color: #e7e7e7;
 }
 
 .sidebar .nav-item {
@@ -28,6 +29,7 @@ body {
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
     background-color: #FFFFFF;
     border-radius: 0px 0px 6px 6px;
+    color: #291a2e !important;
 }
 
 .sidebar .child-nav-item{
@@ -54,16 +56,15 @@ body {
 }
 
 .grandchildren-menu {
-    color: transparent;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.3s ease;
 }
 
 .grandchildren-menu.is-expanded {
-    color:inherit;
-    max-height: 2000px; /* Adjust as needed to accommodate content */
-    transition: max-height 0.5s ease-in-out;
+    max-height: 600px; /* Adjust as needed to accommodate content */
+    transition: max-height 2s ease;
+
 }
 
 #header-title h3 {
