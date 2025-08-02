@@ -4,14 +4,16 @@ import { initializeBarChart } from './charts/barChart.js';
 import { updateDateTime } from './utils/datetime.js';
 import { getSidebarHTML, initializeSidebar } from './components/sidebarComponent.js';
 import { getHeaderHTML } from './components/headerComponent.js';
-import { getContentSectionHTML } from './components/contentSectionComponent.js';
+import { getIndexHTML } from './components/indexComponent.js';
+import { getGeneralLookHTML } from './components/generalLookComponent.js';
 import { getDetailsSectionHTML } from './components/detailsSectionComponent.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sidebar-placeholder').innerHTML = getSidebarHTML();
     initializeSidebar();
     document.getElementById('header-placeholder').innerHTML = getHeaderHTML();
-    document.getElementById('content-section-placeholder').innerHTML = getContentSectionHTML();
+    document.getElementById('content-section-placeholder').innerHTML = getIndexHTML();
+    document.getElementById('general-look-placeholder').innerHTML = getGeneralLookHTML();
     document.getElementById('details-section-placeholder').innerHTML = getDetailsSectionHTML();
 
     // Initialize functions from modules
