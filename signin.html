@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body {
-            background: url('assets/bg1.jpg') no-repeat center center fixed;
+            background: url('src/images/bg1.jpg') no-repeat center center fixed;
             background-size: cover;
             transition: background-image 1s ease-in-out;
             font-family: 'Tajawal', sans-serif;
@@ -55,7 +55,7 @@
 <body class="d-flex flex-column justify-content-between align-items-center min-vh-100 p-3">
     <header class="header d-flex justify-content-between align-items-center p-3 text-white w-100">
         <div class="logo">
-            <img src="assets/logo1.svg" alt="Logo 1" class="img-fluid">
+            <img src="src/images/logo1.svg" alt="Logo 1" class="img-fluid">
         </div>
         <div class="controls d-flex align-items-center gap-3">
             <!-- Language Selection Placeholder -->
@@ -75,7 +75,7 @@
     <main class="main-content d-flex justify-content-center align-items-center p-5" style="min-width: 40%;">
         <div class="signin-group d-flex flex-column justify-content-center align-items-center w-100">
             <div class="logo">
-                <img src="assets/logo0.svg" alt="Logo 0" class="mb-4 img-fluid">
+                <img src="src/images/logo0.svg" alt="Logo 0" class="mb-4 img-fluid">
             </div>
             <h5 class="mb-2 text-white">مرحبًا بعودتك!</h5>
             <p class="mb-3 text-white">تسجيل الدخول إلى حسابك</p>
@@ -83,7 +83,7 @@
             <form class="w-100" action="index.html" method="get">
                 <div class="input-group mb-4 w-100">
                     <span class="input-group-text bg-white border-0 rounded-start-3">
-                        <img src="assets/mail.svg" alt="">
+                        <img src="src/images/mail.svg" alt="">
                     </span>
                     <div class="form-floating">
                         <input type="email" class="form-control border-0 rounded-end-3" id="floatingInputGroup1" placeholder="البريد الالكتروني" style="font-size: large;">
@@ -93,7 +93,7 @@
 
                 <div class="input-group mb-2 w-100" style="margin-top: 30px;">
                     <span class="input-group-text bg-white border-0 rounded-start-3">
-                        <img src="assets/lock.svg" alt="">
+                        <img src="src/images/lock.svg" alt="">
                     </span>
                     <div class="form-floating">
                         <input type="password" class="form-control border-0" id="passwordInput" placeholder="كلمة المرور">
@@ -143,7 +143,7 @@
         <br>
 
         <div class="logos">
-            <img src="assets/nafazlogo.svg" alt="Nafaz Logo" class="mx-2 position-relative">
+            <img src="src/images/nafazlogo.svg" alt="Nafaz Logo" class="mx-2 position-relative">
             <div class="position-absolute" id="backshadow"
                     style="
                             height: 420px;
@@ -155,8 +155,8 @@
                             background: radial-gradient(47.32% 30.26% at 52.8% 50%, #2B2B2B 0%, rgba(14, 14, 14, 0) 100%)
                             ">
             </div>
-            <img src="assets/najizlogo.svg" alt="Najiz Logo" class="mx-2">
-            <img src="assets/sakanylogo.svg" alt="Sakany Logo" class="mx-2">
+            <img src="src/images/najizlogo.svg" alt="Najiz Logo" class="mx-2">
+            <img src="src/images/sakanylogo.svg" alt="Sakany Logo" class="mx-2">
         </div>
         <div class="copyright text-center">
             جميع الحقوق محفوظة لشركة عبر المملكة العقارية 2025
@@ -166,7 +166,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
     <script>
-        const backgrounds = ['assets/bg1.jpg', 'assets/bg2.jpg'];
+        const backgrounds = ['src/images/bg1.jpg', 'src/images/bg2.jpg'];
         let currentIndex = 0;
 
         function changeBackground() {

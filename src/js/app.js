@@ -1,11 +1,11 @@
-import { initializeChartDisplayToggle, toggleChartDisplay } from './achievementToggle.js';
-import { initializeLineChart } from './lineChart.js';
-import { initializeBarChart } from './barChart.js';
-import { updateDateTime } from './datetime.js';
-import { getSidebarHTML, initializeSidebar } from './sidebarComponent.js';
-import { getHeaderHTML } from './headerComponent.js';
-import { getContentSectionHTML } from './contentSectionComponent.js';
-import { getDetailsSectionHTML } from './detailsSectionComponent.js';
+import { initializeChartDisplayToggle, toggleChartDisplay } from './utils/achievementToggle.js';
+import { initializeLineChart } from './charts/lineChart.js';
+import { initializeBarChart } from './charts/barChart.js';
+import { updateDateTime } from './utils/datetime.js';
+import { getSidebarHTML, initializeSidebar } from './components/sidebarComponent.js';
+import { getHeaderHTML } from './components/headerComponent.js';
+import { getContentSectionHTML } from './components/contentSectionComponent.js';
+import { getDetailsSectionHTML } from './components/detailsSectionComponent.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sidebar-placeholder').innerHTML = getSidebarHTML();
