@@ -12,7 +12,7 @@ function indexCard(cardData) {
   return /*html*/`
     <div class="col-md-6 col-lg-6 col-xl-6 mb-4">
       <div class="position-relative z-0 rounded-4 border-0 shadow overflow-hidden px-3 py-2 d-flex flex-column justify-content-between h-100 ${cardData.bgColorClass}">
-        <div class="icon-circle position-absolute d-flex align-items-center justify-content-center rounded-circle bg-white">
+        <div class="icon-circle position-absolute d-flex align-items-center justify-content-center rounded-circle">
           <img src="${cardData.iconSrc}" alt="${cardData.title} Icon">
         </div>
         <div class="d-flex flex-column align-items-start justify-content-between p-0" dir="ltr">

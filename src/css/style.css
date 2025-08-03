@@ -174,11 +174,15 @@ body {
 /* Index Card Styles */
 
 #index-cards .position-relative{
-    z-index: 1 !important;
+    z-index: 0;
+}
+.sidebar.position-sticky{
+    z-index: 1;
 }
 
 /* Icon Circle */
 .icon-circle {
+    background-color: white; /* Default background color */
     top: -20px; /* Adjust to overlap */
     right: -20px; /* Adjust to overlap */
     width: 100px;
@@ -194,17 +198,40 @@ body {
 
 /* Card Background Colors */
 .card-bg-1 {
-    background-color: #caa8a3; /* Light beige */
+    background-color: #caa8a3; 
+    transition: background-color 0.3s ease;
+}
+.card-bg-1:hover {
+    background-color: #b89792;
 }
 
 .card-bg-2 {
-    background-color: #d4c3ba; /* Rosy brown */
+    background-color: #D4C4BA; 
+    transition: background-color 0.3s ease;
+}
+.card-bg-2:hover {
+    background-color: #c2b3a9;
 }
 
 .card-bg-3 {
-    background-color: #87a1ab; /* Golden brown */
+    background-color: #87a1ab; 
+    transition: background-color 0.3s ease;
+}
+.card-bg-3:hover {
+    background-color: #76909a;
 }
 
 .card-bg-4 {
-    background-color: #c8a56b; /* Teal/blue-grey */
+    background-color: #C8A56B; 
+    transition: background-color 0.3s ease;
+}
+.card-bg-4:hover {
+    background-color: #b7945a;
+}
+
+.card-bg-1:hover .icon-circle,
+.card-bg-2:hover .icon-circle,
+.card-bg-3:hover .icon-circle,
+.card-bg-4:hover .icon-circle {
+    background-color: #ffffffb2;
 }
