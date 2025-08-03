@@ -1,6 +1,6 @@
 export function getSidebarHTML() {
     return /*html*/`
-        <nav class="col-md-3 col-xl-2 d-none d-md-block sidebar overflow-auto"  style="scrollbar-width: none; width: 280px; padding:8px;" data-position="0">
+        <nav class="col-md-3 col-xl-2 d-none d-md-block sidebar overflow-auto position-sticky"  style="scrollbar-width: none; width: 280px; padding:8px;" data-position="0">
             <div class="rounded-4 text-white" style="background-color: #331D1F;">
                 <!-- Organization Logo -->
                 <div class="p-3 d-flex justify-content-center">
@@ -39,7 +39,7 @@ export function getSidebarHTML() {
                                 <div class="col-12 text-center">
                                     <div class="d-flex justify-content-center align-items-center">
                                         <span class="text-white user-select-none" id="achieved-span" style="cursor: pointer;">المــحــــــــقــق</span>
-                                        <img src="src/images/swap.svg" alt="swap icon" class="img-fluid mx-2 user-select-none" style="cursor: pointer;" id="swap-icon">
+                                        <img src="src/images/sidebar/swap.svg" alt="swap icon" class="img-fluid mx-2 user-select-none" style="cursor: pointer;" id="swap-icon">
                                         <span class="text-secondary user-select-none" id="target-span" style="cursor: pointer;">المستهدف</span>
 
 

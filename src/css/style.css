@@ -16,7 +16,6 @@ body {
 }
 
 .sidebar .children-menu {
-    position: fixed;
     left: -9999px;
     width: 200px;
     z-index: 2000;
@@ -37,7 +36,6 @@ body {
 }
 
 .nav-item.is-open .children-menu {
-    position: fixed;
     visibility: visible;
     opacity: 1;
     transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;

@@ -38,7 +38,7 @@ export function generateSidebarMenuHTML() {
                     ${toggleIconHTML}
                 </div>
                 ${hasChildren ? /*html*/`
-                    <div class="children-menu rounded p-2" style="color: #291a2e;">
+                    <div class="children-menu rounded p-2 position-fixed" style="color: #291a2e;">
                         <ul class="nav flex-column p-0">
                             ${generateMenuHTML(item.children)}
                         </ul>

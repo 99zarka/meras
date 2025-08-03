@@ -170,21 +170,23 @@ export function initializeSidebarEventListeners() {
         let newPosition = window.scrollY + window.innerHeight - sidebar.offsetHeight;
         let isScrollDown = (newPosition > sidebar.dataset.position)? true : false;
         if(sidebar.offsetHeight< window.innerHeight){
-            sidebar.style.position = 'sticky';
+            sidebar.classList.add('position-sticky');
             sidebar.style.top = `${0}px`;
             sidebar.dataset.position = window.scrollY;
         }
         else if (isScrollDown && window.scrollY > sidebar.offsetHeight - window.innerHeight) {
-            sidebar.style.position = 'sticky';
+            sidebar.classList.add('position-sticky');
             sidebar.style.top = `${window.innerHeight-sidebar.offsetHeight}px`;
             sidebar.dataset.position = newPosition;
         } else if (!isScrollDown && sidebar.dataset.position > window.scrollY) {
-            sidebar.style.position = 'sticky';
+            sidebar.classList.add('position-sticky');
             sidebar.style.top = `${0}px`;
             sidebar.dataset.position = window.scrollY;
         }
         else{
-            sidebar.style.position = 'relative';
+            sidebar.classList.remove('position-sticky');
+            sidebar.classList.add('position-relative');
+
             sidebar.style.top = `${sidebar.dataset.position}px`;
         }
         const childrenMenu = document.querySelector('.is-open .children-menu');
