@@ -34,7 +34,7 @@ export function getGeneralLookHTML() {
                                     <option value="quarterly" disabled>ربع سنوي</option>
                                 </select>
                             </div>
-                            <div id="canvas2-wrapper" style="min-height: 270px; display: flex; align-items: center; justify-content: center;">
+                            <div id="canvas2-wrapper" style="min-height: 240px; display: flex; align-items: center; justify-content: center;">
                                 <canvas id="myChart2" class="w-100"></canvas>
                             </div>
                         </div>
