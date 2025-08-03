@@ -9,7 +9,7 @@ export function generateChildrenMenuHTML(children) {
             const grandchildToggleIconHTML = hasGrandchildren ? '<i class="bi bi-chevron-up toggle-icon me-auto ms-2"></i>' : '';
             return /*html*/`
                 <li class="nav-item child-nav-item my-1 rounded-2 ${hasGrandchildren ? ' has-grandchildren' : ''}">
-                    <a class="nav-link d-flex align-items-center fw-bold" href="${item.link}" style="color: #291a2e;">
+                    <a class="nav-link d-flex align-items-center fw-bold child-link" href="${item.link}">
                         ${item.text}
                         ${grandchildToggleIconHTML}
                     </a>
@@ -17,7 +17,7 @@ export function generateChildrenMenuHTML(children) {
                         <ul class="nav flex-column grandchildren-menu p-0">
                             ${item.grandchildren.map(grandchild => /*html*/`
                                 <li class="nav-item w-100">
-                                    <a class="nav-link" href="${grandchild.link}" style="color: #291a2e;">${grandchild.text}</a>
+                                    <a class="nav-link" href="${grandchild.link}">${grandchild.text}</a>
                                 </li>
                             `).join('')}
                         </ul>
@@ -28,7 +28,7 @@ export function generateChildrenMenuHTML(children) {
     };
 
     return /*html*/`
-        <div class="children-menu rounded p-2 position-fixed" style="color: #291a2e;">
+        <div class="children-menu rounded p-2 position-fixed">
             <ul class="nav flex-column p-0">
                 ${generateMenuHTML(children)}
             </ul>

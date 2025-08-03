@@ -9,7 +9,7 @@ export function generateSidebarMenuHTML() {
 
         return /*html*/`
             <li class="nav-item${hasChildren ? ' has-children' : ''}">
-                <div class="nav-link${activeClass} px-0 text-white main-item d-flex align-items-center py-2" data-index="${index}">
+                <div class="nav-link${activeClass} px-0 main-item d-flex align-items-center py-2" data-index="${index}">
                     <img src="src/images/sidebar/${item.icon}" alt="${item.text} icon" class="ms-2" style="width: 24px; height: 24px;" aria-hidden="true">
                     ${item.text}
                     ${toggleIconHTML}

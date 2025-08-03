@@ -16,7 +16,7 @@ export function getSidebarHTML() {
                             <small class="text-white-50">اخر تحديث 1/1/2025</small>
                         </div>
                     </div>
-                    <a href="signin.html" class="text-white"><img src="src/images/logout.svg" alt="log out icon" class="img-fluid"></a>
+                    <a href="signin.html" class=""><img src="src/images/logout.svg" alt="log out icon" class="img-fluid"></a>
                 </div>
 
                 <!-- Chart Canvas -->

@@ -8,7 +8,17 @@ body {
 }
 
 .sidebar .main-item {
+    color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .main-item:hover {
+    color: #dbbcbf; /* A subtle light grey */
+}
+
+.sidebar .main-item:hover img {
+    opacity: 0.6; /* Subtle visual feedback for interactive images */
 }
 
 .sidebar .main-item .toggle-icon {
@@ -33,6 +43,12 @@ body {
 
 .sidebar .child-nav-item{
     background-color: #F5F5F5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .child-nav-item:hover {
+    background-color: #e0e0e0; /* A slightly darker grey for children */
+    color: #291a2e;
 }
 
 .nav-item.is-open .children-menu {
@@ -53,6 +69,14 @@ body {
     transform: rotate(180deg);
 }
 
+.children-menu .child-link {
+    color: #291a2e; 
+}
+
+.children-menu .child-link:hover{
+    color: #b67c80; 
+}
+
 .grandchildren-menu {
     max-height: 0;
     overflow: hidden;
@@ -63,6 +87,14 @@ body {
     max-height: 600px; /* Adjust as needed to accommodate content */
     transition: max-height 2s ease;
 
+}
+
+.grandchildren-menu .nav-item a{
+    color: #291a2e; 
+}
+
+.grandchildren-menu .nav-item:hover a{
+    color: #b67c80; 
 }
 
 #header-title h3 {
@@ -199,34 +231,38 @@ body {
 /* Card Background Colors */
 .card-bg-1 {
     background-color: #caa8a3; 
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .card-bg-1:hover {
     background-color: #b89792;
+    transform: translateY(-5px);
 }
 
 .card-bg-2 {
     background-color: #D4C4BA; 
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .card-bg-2:hover {
     background-color: #c2b3a9;
+    transform: translateY(-5px);
 }
 
 .card-bg-3 {
     background-color: #87a1ab; 
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .card-bg-3:hover {
     background-color: #76909a;
+    transform: translateY(-5px);
 }
 
 .card-bg-4 {
     background-color: #C8A56B; 
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .card-bg-4:hover {
     background-color: #b7945a;
+    transform: translateY(-5px);
 }
 
 .card-bg-1:hover .icon-circle,
@@ -234,4 +270,36 @@ body {
 .card-bg-3:hover .icon-circle,
 .card-bg-4:hover .icon-circle {
     background-color: #ffffffb2;
+}
+
+/* General hover effects for links and buttons */
+a {
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #874b50; /* A consistent hover color for links */
+}
+
+button {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.9; /* Slightly reduce opacity on hover for general buttons */
+}
+
+/* General hover effects for interactive elements */
+[onclick]:hover, [data-bs-toggle]:hover, [data-toggle]:hover, [data-target]:hover, .clickable:hover {
+    cursor: pointer;
+    opacity: 0.9; /* Subtle visual feedback for interactive divs/elements */
+    transition: opacity 0.3s ease;
+}
+
+img {
+    transition: opacity 0.3s ease;
+}
+
+img:hover {
+    opacity: 0.8; /* Subtle visual feedback for interactive images */
 }
