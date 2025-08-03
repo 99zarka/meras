@@ -11,16 +11,16 @@
 function indexCard(cardData) {
   return /*html*/`
     <div class="col-md-6 col-lg-6 col-xl-6 mb-4">
-      <div class="position-relative z-0 rounded-4 border-0 shadow overflow-hidden p-3 d-flex flex-column justify-content-between z-0 ${cardData.bgColorClass}">
-      <div class="icon-circle position-absolute d-flex align-items-center justify-content-center rounded-circle bg-white">
-        <img src="${cardData.iconSrc}" alt="${cardData.title} Icon">
-      </div>
+      <div class="position-relative z-0 rounded-4 border-0 shadow overflow-hidden p-3 d-flex flex-column justify-content-between h-100 ${cardData.bgColorClass}">
+        <div class="icon-circle position-absolute d-flex align-items-center justify-content-center rounded-circle bg-white">
+          <img src="${cardData.iconSrc}" alt="${cardData.title} Icon">
+        </div>
         <div class="d-flex flex-column align-items-start justify-content-between p-0" dir="ltr">
           <span class="percentage-badge text-success bg-white bg-opacity-50 mb-3 py-1 px-2 fw-bold" style="border-radius: 10px;">${cardData.percentage}</span>
           <h5 class="text-white">${cardData.title}</h5>
-          <p class="text-black fs-1 fw-bold"  dir="ltr">
+          <p class="text-black fs-2 fw-medium m-0"  dir="ltr">
             ${cardData.value}
-            <span class="currency fs-4 fw-medium">SAR</span>
+            <span class="currency fs-4 fw-light">SAR</span>
           </p>
         </div>
       </div>

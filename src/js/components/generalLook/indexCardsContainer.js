@@ -10,7 +10,7 @@ function indexCardsContainer(cardsData) {
 
   return /*html*/`
     <div id="index-cards" class="container-fluid mt-4">
-      <div class="row justify-content-center">
+      <div class="row d-flex justify-content-center">
         ${cardsHtml}
       </div>
     </div>
