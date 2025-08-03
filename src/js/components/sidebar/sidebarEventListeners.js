@@ -20,7 +20,7 @@ export function initializeSidebarEventListeners() {
                 childrenMenu.style.top = '';
                 childrenMenu.style.right = '';
                 childrenMenu.style.transform = '';
-                childrenMenu.style.zIndex = '1005';
+                childrenMenu.style.zIndex = '2000';
             }
         });
         document.querySelectorAll('.has-grandchildren .grandchildren-menu').forEach(menu => {
