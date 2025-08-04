@@ -1,8 +1,8 @@
 export function getSidebarHTML() {
     return /*html*/`
         <div class="sidebar-toggle-menu d-md-none position-fixed top-0 p-3 w-100 d-flex align-items-center" style="background-color: #331D1F;">
-            <button class="btn btn-outline-light sidebar-toggle-button" type="button" id="sidebar-toggle-btn">
-                <i class="bi bi-list"></i>
+            <button class="btn btn-outline-light sidebar-toggle-button d-flex justify-content-center align-items-center" type="button" id="sidebar-toggle-btn" >
+                <div class="icon-container"><i class="bi bi-list  align-middle text-center"></i></div>
             </button>
             <div class="flex-grow-1 text-center">
                 <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid" style="height: 30px;">
