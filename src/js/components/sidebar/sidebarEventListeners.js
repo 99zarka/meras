@@ -163,6 +163,9 @@ export function initializeSidebarEventListeners() {
         closeAllChildrenMenus();
         const sidebar = document.querySelector('.sidebar');
         sidebar.classList.toggle('d-none',true);
+        const icon = sidebarToggleButton.querySelector('i');
+        icon.classList.toggle('bi-x-lg', false);
+        icon.classList.toggle('bi-list', true);
 
     });
 
