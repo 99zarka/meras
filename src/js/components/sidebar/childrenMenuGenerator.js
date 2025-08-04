@@ -14,13 +14,15 @@ export function generateChildrenMenuHTML(children) {
                         ${grandchildToggleIconHTML}
                     </a>
                     ${hasGrandchildren ? /*html*/`
-                        <ul class="nav flex-column grandchildren-menu p-0">
-                            ${item.grandchildren.map(grandchild => /*html*/`
-                                <li class="nav-item w-100">
-                                    <a class="nav-link" href="${grandchild.link}">${grandchild.text}</a>
-                                </li>
-                            `).join('')}
-                        </ul>
+                        <div class="grandchildren-menu">
+                            <ul class="nav flex-column grandchildren-wrapper  p-0">
+                                ${item.grandchildren.map(grandchild => /*html*/`
+                                    <li class="nav-item w-100">
+                                        <a class="nav-link" href="${grandchild.link}">${grandchild.text}</a>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
                     ` : ''}
                 </li>
             `;
