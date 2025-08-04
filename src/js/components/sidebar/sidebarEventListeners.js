@@ -175,6 +175,14 @@ export function initializeSidebarEventListeners() {
             const sidebar = document.querySelector('.sidebar');
             if (sidebar) {
                 sidebar.classList.toggle('d-none');
+                const icon = sidebarToggleButton.querySelector('i');
+                if (sidebar.classList.contains('d-none')) {
+                    icon.classList.remove('bi-x-lg');
+                    icon.classList.add('bi-list');
+                } else {
+                    icon.classList.remove('bi-list');
+                    icon.classList.add('bi-x-lg');
+                }
             }
         });
     }
