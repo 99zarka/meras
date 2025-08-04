@@ -30,6 +30,12 @@ export function initializeSidebarEventListeners() {
                 toggleIcon.classList.remove('is-rotated');
             }
         });
+
+        // Remove backdrop if it exists
+        const backdrop = document.querySelector('.sidebar-backdrop');
+        if (backdrop) {
+            backdrop.remove();
+        }
     }
 
     /**
@@ -58,10 +64,22 @@ export function initializeSidebarEventListeners() {
                 parentLi.classList.add('is-open');
                 const mainItemRect = this.getBoundingClientRect();
                 const rightPosition = window.innerWidth - mainItemRect.left;
-
+                
                 childrenMenu.style.top = `${mainItemRect.top}px`;
-                childrenMenu.style.right = `${rightPosition}px`;
-                childrenMenu.style.left = 'auto';
+                if (window.innerWidth < 768) {
+                    childrenMenu.style.left = `${mainItemRect.left}px`;
+                    childrenMenu.style.right = 'auto';
+
+                    // Create and append backdrop
+                    const backdrop = document.createElement('div');
+                    backdrop.classList.add('sidebar-backdrop');
+                    document.body.appendChild(backdrop);
+                }
+                else{
+                    childrenMenu.style.right = `${rightPosition}px`;
+                    childrenMenu.style.left = 'auto';
+
+                }
 
                 const menuRect = childrenMenu.getBoundingClientRect();
                 const viewportHeight = window.innerHeight;
@@ -166,7 +184,20 @@ export function initializeSidebarEventListeners() {
      * Also updates the position of any open children menus.
      */
     window.addEventListener('scroll', () => {
+        const childrenMenu = document.querySelector('.is-open .children-menu');
+        if (childrenMenu) {
+            childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
+            setTimeout(() => {
+                childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
+            }, 30);
+        }
         const sidebar = document.querySelector('.sidebar');
+        if (window.innerWidth < 768) {
+            sidebar.classList.toggle('position-sticky',false);
+            sidebar.classList.toggle('position-relative',false);
+            sidebar.classList.toggle('position-static',true);
+            return;
+        }
         let newPosition = window.scrollY + window.innerHeight - sidebar.offsetHeight;
         let isScrollDown = (newPosition > sidebar.dataset.position)? true : false;
         if(sidebar.offsetHeight< window.innerHeight){
@@ -189,12 +220,6 @@ export function initializeSidebarEventListeners() {
 
             sidebar.style.top = `${sidebar.dataset.position}px`;
         }
-        const childrenMenu = document.querySelector('.is-open .children-menu');
-        if (childrenMenu) {
-            childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
-            setTimeout(() => {
-                childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
-            }, 30);
-        }
+
     });
 }
