@@ -1,7 +1,7 @@
 export function getHeaderHTML() {
     const username = "محمد"; // Example username, replace with dynamic data if needed
     return /*html*/`
-        <div class="row flex-row mb-3 bg-white rounded-4 p-3 d-flex align-items-center justify-content-between">
+        <div class="row flex-row mb-3 white-bg rounded-4 p-3 d-flex align-items-center justify-content-between">
             <div class="col-auto" id="header-title">
                 <h3 class="mb-0">صباح الخير , ${username} 👋🏻</h3>
             </div>
@@ -19,7 +19,7 @@ export function getHeaderHTML() {
                     <i class="bi bi-bell-fill fs-5"></i>
                 </button>
                 <!-- Light/Dark Mode Toggle Button -->
-                <button class="btn rounded-2 border-0 d-flex align-items-center justify-content-center bg-transparent" aria-label="Toggle light/dark mode">
+                <button id="darkModeToggle" class="btn rounded-2 border-0 d-flex align-items-center justify-content-center bg-transparent" aria-label="Toggle light/dark mode">
                     <i class="bi bi-sun fs-5"></i> <!-- Or bi-moon for dark mode -->
                 </button>
             </div>

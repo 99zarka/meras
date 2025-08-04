@@ -10,7 +10,7 @@ const dataItems = [
 export function getIndexHTML() {
     return /*html*/`
         <div class="row mb-3">
-            <div class="col-12 bg-white rounded-4 p-0">
+            <div class="col-12 index-container white-bg rounded-4 p-0">
                 <div class="d-flex align-items-center flex-row rounded-top-4 p-3" id="contentHeader">
                     <div class="d-flex flex-column col-2 align-items-center">
                         <img src="src/images/logo3.svg" alt="Logo 3" class="img-fluid mb-2" style="max-height: 50px;">
@@ -20,7 +20,7 @@ export function getIndexHTML() {
                         ${dataItems.map(item => /*html*/`
                             <div class="d-flex align-items-center me-3 mb-2 mb-sm-0">
                                 <i class="bi ${item.icon} fs-5 ${item.color} ms-2"></i>
-                                <span class="text-dark">${item.text}</span>
+                                <span class="">${item.text}</span>
                             </div>
                         `).join('')}
                     </div>

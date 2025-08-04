@@ -26,7 +26,7 @@ export function initializeBarChart(chartId, labels, data) {
         maintainAspectRatio: false,
         layout: {
             padding: {
-                top: 60
+                top: 30
             }
         },
         scales: {
@@ -80,27 +80,7 @@ export function initializeBarChart(chartId, labels, data) {
                     }
                 }
             },
-            customTitle: { // This is the custom plugin ID
-                beforeDraw(chart) {
-                    const { ctx, chartArea } = chart;
-                    if (!chartArea) return;
-
-                    ctx.save();
-                    ctx.textAlign = 'right';
-                    ctx.textBaseline = 'top';
-                    ctx.direction = 'rtl';
-
-                    ctx.font = 'bold 20px Tajawal, sans-serif';
-                    ctx.fillStyle = '#000';
-                    ctx.fillText('نظرة عامة', chartArea.right - 8, chartArea.top - 50);
-
-                    ctx.font = '14px Tajawal, sans-serif';
-                    ctx.fillStyle = '#5E6E74';
-                    ctx.fillText('الأرباح الشهرية', chartArea.right - 8, chartArea.top - 20);
-
-                    ctx.restore();
-                }
-            }
+            
         }
     };
 

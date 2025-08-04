@@ -18,8 +18,12 @@ export function getGeneralLookHTML() {
                 <div class="row p-3 my-3">
                     <div class="col-12 col-lg-6">
                         <!-- Add selector above chart -->
-                        <div class="rounded-shadow">
-                            <div class="" style="top: 30px; left: 20px;">
+                        <div class="position-relative rounded-shadow bar-chart-container" style="min-height: 300px; padding: 20px;">
+                            <div className="">
+                                <h5 class="">نظرة عامة </h5>
+                                <small class="muted">الأرباح الشهرية</small>
+                            </div>
+                            <div class="position-absolute" style="top: 30px; left: 20px;">
                                 <select class="form-select" 
                                     style="width: auto; 
                                            color: #5E6E74;

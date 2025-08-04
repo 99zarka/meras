@@ -9,7 +9,7 @@ function indexCardsContainer(cardsData) {
   const cardsHtml = cardsData.map(card => indexCard(card)).join('');
 
   return /*html*/`
-    <div id="index-cards" class="container-fluid mt-4">
+    <div id="index-cards" class="container-fluid mt-4 mt-lg-0">
       <div class="row d-flex justify-content-center">
         ${cardsHtml}
       </div>
