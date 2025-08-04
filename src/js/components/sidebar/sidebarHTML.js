@@ -1,9 +1,17 @@
 export function getSidebarHTML() {
     return /*html*/`
-        <nav class="col-md-3 col-xl-2 d-none d-md-block sidebar overflow-auto position-sticky"  style="scrollbar-width: none; width: 280px; padding:8px;" data-position="0">
+        <div class="sidebar-toggle-menu d-md-none sticky-top p-3 w-100 d-flex align-items-center" style="background-color: #331D1F;">
+            <button class="btn btn-outline-light sidebar-toggle-button" type="button" id="sidebar-toggle-btn">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="flex-grow-1 text-center">
+                <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid" style="height: 30px;">
+            </div>
+        </div>
+        <nav class="col-12 d-md-block sidebar overflow-auto position-sticky"  style="scrollbar-width: none; padding:8px;" data-position="0">
             <div class="rounded-4 text-white" style="background-color: #331D1F;">
                 <!-- Organization Logo -->
-                <div class="p-3 d-flex justify-content-center">
+                <div class="p-3 d-flex justify-content-center d-none d-md-block">
                     <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid rounded">
                 </div>
 
