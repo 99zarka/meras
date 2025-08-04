@@ -159,8 +159,26 @@ export function initializeSidebarEventListeners() {
     /**
      * Adds a resize event listener to close all children menus when the window is resized.
      */
-    window.addEventListener('resize', closeAllChildrenMenus);
-    
+    window.addEventListener('resize', () => {
+        closeAllChildrenMenus();
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('d-none',true);
+
+    });
+
+    /**
+     * Adds click event listener to the sidebar toggle button to show/hide the sidebar.
+     */
+    const sidebarToggleButton = document.getElementById('sidebar-toggle-btn');
+    if (sidebarToggleButton) {
+        sidebarToggleButton.addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('d-none');
+            }
+        });
+    }
+
     /**
      * Adds transitionend event listener to .sidebar .children-menu elements.
      */
