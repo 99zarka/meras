@@ -30,6 +30,7 @@ body {
 }
 
 .sidebar .children-menu {
+    position: fixed;
     left: -9999px;
     width: 200px;
     z-index: 2000;
@@ -320,16 +321,32 @@ img:hover {
 
 @media (max-width: 767.98px) {
     body{
-        padding-top:80px
+        padding-top:70px
     }
     .sidebar {
         width: 100%;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
     #sidebar-placeholder {
         position: static;
         width: 100%;
         height: auto;
         overflow: visible;
+    }
+
+    .shown{
+        background-color: #331D1F;
+        padding-bottom: 150px;
+        scrollbar-width: 2px; 
+        scrollbar-color: #dbbcbf transparent; /* Custom scrollbar color */
+        z-index: 1000; /* Ensure it's above other content */
+    }
+    .sidebar .children-menu {
+        position: absolute;
+        top: 200px;
+        overflow-x: hidden;
+        left: 0;
     }
 }
 
@@ -358,5 +375,4 @@ img:hover {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 1999; 
 }

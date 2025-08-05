@@ -30,7 +30,7 @@ export function generateChildrenMenuHTML(children) {
     };
 
     return /*html*/`
-        <div class="children-menu rounded p-2 position-fixed">
+        <div class="children-menu rounded p-2">
             <ul class="nav flex-column p-0">
                 ${generateMenuHTML(children)}
             </ul>

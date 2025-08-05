@@ -67,6 +67,7 @@ export function initializeSidebarEventListeners() {
                 
                 childrenMenu.style.top = `${mainItemRect.top}px`;
                 if (window.innerWidth < 768) {
+                    childrenMenu.style.top = `${0}px`;
                     childrenMenu.style.left = `${mainItemRect.left}px`;
                     childrenMenu.style.right = 'auto';
 
@@ -161,11 +162,28 @@ export function initializeSidebarEventListeners() {
      */
     window.addEventListener('resize', () => {
         closeAllChildrenMenus();
+        
         const sidebar = document.querySelector('.sidebar');
         sidebar.classList.toggle('d-none',true);
+        sidebar.classList.toggle('shown',false);
+        sidebar.classList.toggle('position-fixed', false);
+
+        if(window.innerWidth < 768)
+        {
+            sidebar.style.paddingBottom = "150px"
+        }
+        else{
+            sidebar.style.paddingBottom = "8px";
+            sidebar.classList.toggle('position-sticky',true);
+            sidebar.style.top = `${0}px`;
+            sidebar.dataset.position = 0;
+        }
+
         const icon = sidebarToggleButton.querySelector('i');
         icon.classList.toggle('bi-x-lg', false);
         icon.classList.toggle('bi-list', true);
+        document.querySelector('body').removeAttribute("scroll");
+        document.querySelector('body').style.overflow = "auto";
 
     });
 
@@ -178,13 +196,21 @@ export function initializeSidebarEventListeners() {
             const sidebar = document.querySelector('.sidebar');
             if (sidebar) {
                 sidebar.classList.toggle('d-none');
+                sidebar.classList.toggle('shown');
+                sidebar.classList.toggle('position-fixed', true);
+                sidebar.style.top = '70px';
+
                 const icon = sidebarToggleButton.querySelector('i');
                 if (sidebar.classList.contains('d-none')) {
                     icon.classList.remove('bi-x-lg');
                     icon.classList.add('bi-list');
+                    document.querySelector('body').removeAttribute("scroll");
+                    document.querySelector('body').style.overflow = "auto";
                 } else {
                     icon.classList.remove('bi-list');
                     icon.classList.add('bi-x-lg');
+                    document.querySelector('body').setAttribute("scroll", "no");
+                    document.querySelector('body').style.overflow = "hidden";
                 }
             }
         });
@@ -203,7 +229,10 @@ export function initializeSidebarEventListeners() {
                 sidebar.style.paddingBottom = `${currentPaddingBottom + childrenMenu.getBoundingClientRect().bottom - sidebar.getBoundingClientRect().bottom}px`;
             }
             else{
-                sidebar.style.paddingBottom = "8px"
+                if(window.innerWidth < 768)
+                    sidebar.style.paddingBottom = "150px"
+                else
+                    sidebar.style.paddingBottom = "8px";
             }
         });
     });
