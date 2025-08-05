@@ -1,6 +1,6 @@
 export function getSidebarHTML() {
     return /*html*/`
-        <div class="sidebar-toggle-menu d-md-none position-fixed top-0 p-3 w-100 d-flex align-items-center" style="background-color: #331D1F;">
+        <div class="sidebar-toggle-menu d-md-none position-fixed top-0 p-3 w-100 d-flex align-items-center">
             <button class="btn btn-outline-light sidebar-toggle-button d-flex justify-content-center align-items-center" type="button" id="sidebar-toggle-btn" >
                 <div class="icon-container"><i class="bi bi-list  align-middle text-center"></i></div>
             </button>

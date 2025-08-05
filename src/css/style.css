@@ -334,6 +334,7 @@ img:hover {
 }
 
 .sidebar-toggle-menu {
+    background-color: #331D1F;
     z-index: 1030; /* Ensure it's above other content */
 }
 
