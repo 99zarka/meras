@@ -100,7 +100,7 @@
 
             </select>
             <!-- Dark Mode Button Placeholder -->
-            <button class="btn rounded-2 border-0" aria-label="Toggle light/dark mode">
+            <button class="btn rounded-2 border-0" aria-label="Toggle light/dark mode" id="darkModeToggle">
                 <i class="bi bi-sun fs-5 text-white"></i>
             </button>
         </div>
@@ -199,7 +199,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
-    <script>
+    <script type="module">
+        import { initializeThemeToggle } from './src/js/utils/applyTheme.js';
+
+        initializeThemeToggle();
+
         const backgrounds = ['src/images/bg1.jpg', 'src/images/bg2.jpg'];
         let currentIndex = 0;
 
