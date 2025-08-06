@@ -193,6 +193,10 @@ body {
     color: #c8a78c !important;
 }
 
+#contentHeader svg {
+    color: #874b50;
+}
+
 #current-datetime {
     direction: ltr;
 }

@@ -106,6 +106,10 @@ body.dark-mode #contentHeader {
     background-color: #171717;
 }
 
+body.dark-mode #contentHeader svg {
+    color: white;
+}
+
 body.dark-mode .bar-chart-container {
     background: #171717;
     border-color: #422326;
