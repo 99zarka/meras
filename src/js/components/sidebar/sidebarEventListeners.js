@@ -43,8 +43,12 @@ export function initializeSidebarEventListeners() {
      * Handles positioning of the children menus to prevent overflow.
      */
     document.querySelectorAll('.nav-item.has-children > .main-item').forEach(mainItem => {
+        
+        
         mainItem.addEventListener('click', function (event) {
-
+            let isDashboard = mainItem.classList.contains("dashboard-card")
+            let isSidebar = !isDashboard;
+         
             event.preventDefault();
             const parentLi = this.closest('.nav-item');
             const childrenMenu = parentLi.querySelector('.children-menu');
@@ -61,13 +65,20 @@ export function initializeSidebarEventListeners() {
             const isOpening = !parentLi.classList.contains('is-open');
             closeAllChildrenMenus();
 
-            if (isOpening) {
+            if (isOpening ) {
                 parentLi.classList.add('is-open');
                 const mainItemRect = this.getBoundingClientRect();
                 const rightPosition = window.innerWidth - mainItemRect.left;
                 
-                childrenMenu.style.top = `${mainItemRect.top}px`;
-                if (window.innerWidth < 768) {
+                if(isSidebar){
+                    childrenMenu.style.top = `${mainItemRect.top}px`;
+                }
+                else{
+                    childrenMenu.style.top = `${mainItemRect.bottom}px`;
+                }
+
+
+                if (window.innerWidth < 768 && isSidebar) {
                     childrenMenu.style.top = `${0}px`;
                     childrenMenu.style.left = `${mainItemRect.left}px`;
                     childrenMenu.style.right = 'auto';
@@ -78,8 +89,14 @@ export function initializeSidebarEventListeners() {
                     document.body.appendChild(backdrop);
                 }
                 else{
-                    childrenMenu.style.right = `${rightPosition}px`;
-                    childrenMenu.style.left = 'auto';
+                    if(isSidebar){
+                        childrenMenu.style.right = `${rightPosition}px`;
+                        childrenMenu.style.left = 'auto';
+                    }
+                    else{
+                        childrenMenu.style.left = `${mainItemRect.left + mainItemRect.width / 2 - childrenMenu.offsetWidth / 2}px`;
+                        childrenMenu.style.right = 'auto';
+                    }
 
                 }
 
@@ -87,13 +104,27 @@ export function initializeSidebarEventListeners() {
                 const viewportHeight = window.innerHeight;
                 
 
-                if (menuRect.bottom > viewportHeight) {
+                if (menuRect.bottom > viewportHeight && isSidebar) {
                     const overflow = menuRect.bottom - viewportHeight+20;
                     
                     childrenMenu.style.transform = `translateY(-${overflow}px)`;
                 } else {
                     childrenMenu.style.transform = 'translateY(0)';
                 }
+
+                if (menuRect.left < 0) {
+                    childrenMenu.style.left = ` ${0}px`;
+                }
+
+                // Handle horizontal overflow for sidebar menus
+                if (menuRect.right > window.innerWidth) {
+                    const horizontalOverflow = menuRect.right - window.innerWidth + 20;
+                    childrenMenu.style.transform += ` translateX(-${horizontalOverflow}px)`;
+                } else {
+                    childrenMenu.style.transform += ' translateX(0)';
+                }
+
+
             }
         });
     });
@@ -244,11 +275,21 @@ export function initializeSidebarEventListeners() {
      */
     window.addEventListener('scroll', () => {
         const childrenMenu = document.querySelector('.is-open .children-menu');
-        if (childrenMenu) {
-            childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
-            setTimeout(() => {
+        if (childrenMenu){
+            let isDashboard = childrenMenu.classList.contains("dashboard-card")
+            let isSidebar = !isDashboard;
+            if (isDashboard) {
                 childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
-            }, 30);
+                setTimeout(() => {
+                    childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().top}px`;
+                }, 30);
+            }
+            else{
+                childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().bottom}px`;
+                setTimeout(() => {
+                    childrenMenu.style.top = `${childrenMenu.parentElement.getBoundingClientRect().bottom}px`;
+                }, 30);
+            }
         }
         const sidebar = document.querySelector('.sidebar');
         if (window.innerWidth < 768) {

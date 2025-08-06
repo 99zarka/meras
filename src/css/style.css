@@ -7,29 +7,29 @@ body {
     background-color: #FFFFFF;
 }
 
-.sidebar .nav-item {
+.nav-item {
     position: relative;
 }
 
-.sidebar .main-item {
+.main-item {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.sidebar .main-item:hover {
+.main-item:hover {
     color: #dbbcbf; /* A subtle light grey */
 }
 
-.sidebar .main-item:hover img {
+.main-item:hover img {
     opacity: 0.6; /* Subtle visual feedback for interactive images */
 }
 
-.sidebar .main-item .toggle-icon {
+.main-item .toggle-icon {
     transition: transform 0.3s ease;
 }
 
-.sidebar .children-menu {
+.children-menu {
     position: fixed;
     left: -9999px;
     width: 200px;
@@ -46,12 +46,17 @@ body {
     color: #291a2e !important;
 }
 
-.sidebar .child-nav-item{
+.dashboard-component .children-menu {
+    width: 300px;
+}
+
+
+.child-nav-item{
     background-color: #F5F5F5;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.sidebar .child-nav-item:hover {
+.child-nav-item:hover {
     background-color: #e0e0e0; /* A slightly darker grey for children */
     color: #291a2e;
 }
