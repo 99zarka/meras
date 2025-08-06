@@ -42,8 +42,9 @@ export function initializeSidebarEventListeners() {
      * Adds click event listeners to main sidebar items to toggle their children menus.
      * Handles positioning of the children menus to prevent overflow.
      */
-    document.querySelectorAll('.main-item').forEach(mainItem => {
+    document.querySelectorAll('.nav-item.has-children > .main-item').forEach(mainItem => {
         mainItem.addEventListener('click', function (event) {
+
             event.preventDefault();
             const parentLi = this.closest('.nav-item');
             const childrenMenu = parentLi.querySelector('.children-menu');

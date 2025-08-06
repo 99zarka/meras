@@ -11,6 +11,7 @@ import { lineChartLabels, lineChartValues } from './data/lineChartData.js';
 import { barChartLabels, barChartValues } from './data/barChartData.js';
 import { initializeThemeToggle } from './utils/applyTheme.js';
 import { initializeDashboardEventListeners } from './components/dashboard/dashboardEventListeners.js';
+import { initializeRouting } from './utils/routing.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sidebar-placeholder').innerHTML = getSidebarHTML();
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('details-section-placeholder').innerHTML = getDetailsSectionHTML();
 
     // Initialize functions from modules
+    initializeRouting();
     initializeChartDisplayToggle();
     initializeLineChart('myChart', lineChartLabels, lineChartValues);
     initializeBarChart('myChart2', barChartLabels, barChartValues);

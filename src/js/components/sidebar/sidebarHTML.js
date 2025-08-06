@@ -8,14 +8,18 @@ export function getSidebarHTML() {
                 <div class="icon-container"><i class="bi bi-list  align-middle text-center"></i></div>
             </button>
             <div class="flex-grow-1 text-center">
-                <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid" style="height: 30px;">
+                <a href="./index.html">
+                    <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid" style="height: 30px;">
+                </a>
             </div>
         </div>
         <nav class="col-12 d-none d-md-block sidebar pt-md-2 overflow-auto position-sticky pe-md-2" data-position="0">
             <div class="rounded-4 text-white" style="background-color: #331D1F;">
                 <!-- Organization Logo -->
                 <div class="p-3 d-md-flex justify-content-center d-none">
-                    <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid rounded">
+                    <a href="./index.html">
+                        <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid rounded">
+                    </a>
                 </div>
 
                 <!-- User Profile -->

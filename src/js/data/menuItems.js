@@ -1,32 +1,32 @@
 export const menuItems = [
-    { text: "الرئيسية", link: "#", icon: "home.svg", active: true, children: [] },
+    { text: "الرئيسية", link: "./index.html", icon: "home.svg", active: true, children: [] },
     { text: "المشاريع", link: "#", icon: "projects.svg", children: [
         { text: "سكني", link: "#", grandchildren: [
-            { text: "جدايا الرياض", link: "#" },
-            { text: "المرسي جدة", link: "#" },
-            { text: "البيت مكة", link: "#" },
-            { text: "سديل مكة", link: "#" },
-            { text: "جزالا جدة", link: "#" },
-            { text: "الواحة الدمام", link: "#" },
-            { text: "الفيصلية الخبر", link: "#" },
-            { text: "الربيع الرياض", link: "#" },
-            { text: "الشروق جدة", link: "#" }
+            { text: "جدايا الرياض", link: "./index.html?page=myproject" },
+            { text: "المرسي جدة", link: "./index.html?page=myproject" },
+            { text: "البيت مكة", link: "./index.html?page=myproject" },
+            { text: "سديل مكة", link: "./index.html?page=myproject" },
+            { text: "جزالا جدة", link: "./index.html?page=myproject" },
+            { text: "الواحة الدمام", link: "./index.html?page=myproject" },
+            { text: "الفيصلية الخبر", link: "./index.html?page=myproject" },
+            { text: "الربيع الرياض", link: "./index.html?page=myproject" },
+            { text: "الشروق جدة", link: "./index.html?page=myproject" }
         ]},
-        { text: "المشاريع السكنية", link: "#", grandchildren: [
-            { text: "مشروع سكني 1", link: "#" },
-            { text: "مشروع سكني 2", link: "#" }
+        { text: "المشاريع السكنية", link: "./index.html?page=myproject", grandchildren: [
+            { text: "مشروع سكني 1", link: "./index.html?page=myproject" },
+            { text: "مشروع سكني 2", link: "./index.html?page=myproject" }
         ]},
         { text: "الارضي", link: "#", grandchildren: [
-            { text: "أرض 1", link: "#" },
+            { text: "أرض 1", link: "./index.html?page=myproject" },
             { text: "أرض 2", link: "#" }
         ]},
-        { text: "المشاريع التجارية", link: "#", grandchildren: [
-            { text: "مشروع تجاري 1", link: "#" },
-            { text: "مشروع تجاري 2", link: "#" }
+        { text: "المشاريع التجارية", link: "./index.html?page=myproject", grandchildren: [
+            { text: "مشروع تجاري 1", link: "./index.html?page=myproject" },
+            { text: "مشروع تجاري 2", link: "./index.html?page=myproject" }
         ]},
-        { text: "المشاريع اللوجستية", link: "#", grandchildren: [
-            { text: "مشروع لوجستي 1", link: "#" },
-            { text: "مشروع لوجستي 2", link: "#" }
+        { text: "المشاريع اللوجستية", link: "./index.html?page=myproject", grandchildren: [
+            { text: "مشروع لوجستي 1", link: "./index.html?page=myproject" },
+            { text: "مشروع لوجستي 2", link: "./index.html?page=myproject" }
         ]}
     ]},
     { text: "PMO", link: "#", icon: "pmo.svg", children: [
