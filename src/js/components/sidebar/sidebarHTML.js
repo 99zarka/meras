@@ -11,7 +11,7 @@ export function getSidebarHTML() {
                 <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid" style="height: 30px;">
             </div>
         </div>
-        <nav class="col-12 d-none d-md-block sidebar pt-md-2 overflow-auto position-sticky" data-position="0">
+        <nav class="col-12 d-none d-md-block sidebar pt-md-2 overflow-auto position-sticky pe-md-2" data-position="0">
             <div class="rounded-4 text-white" style="background-color: #331D1F;">
                 <!-- Organization Logo -->
                 <div class="p-3 d-md-flex justify-content-center d-none">

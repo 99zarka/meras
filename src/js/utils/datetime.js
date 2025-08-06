@@ -29,8 +29,8 @@ export function updateDateTime() {
     } else if (displayHours > 12) {
         displayHours -= 12; // PM hours
     }
-
-    const formattedTime = `${displayHours}:${minutes}`;
+    const formattedMinutes = minutes.padStart(2, '0');
+    const formattedTime = `${displayHours}:${formattedMinutes}`;
 
     const dateTimeString = `${formattedWeekday} ${formattedDate} / ${formattedTime}`;
     console.log(`Current Date and Time: ${dateTimeString}`);

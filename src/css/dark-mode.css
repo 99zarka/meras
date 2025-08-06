@@ -102,8 +102,9 @@ body.dark-mode .index-container{
     background-color: #171717;
 }
 
+
 body.dark-mode #contentHeader {
-    background-color: #171717;
+    background-color: #422326;
 }
 
 body.dark-mode #contentHeader svg {
@@ -123,4 +124,8 @@ body.dark-mode .bar-chart-container h5 {
 
 body.dark-mode .icon-circle {
     background-color: #eddddf;
+}
+
+body.dark-mode .dashboard-toggle {
+    background-color: #211113;
 }

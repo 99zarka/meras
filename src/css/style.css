@@ -380,3 +380,8 @@ img:hover {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5); 
 }
+
+
+.dashboard-toggle {
+    background-color: #e7e7e7;
+}
