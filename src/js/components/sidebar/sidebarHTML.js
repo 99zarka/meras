@@ -1,4 +1,7 @@
+import { getUserData } from '../../data/userData.js';
+
 export function getSidebarHTML() {
+    const userData = getUserData();
     return /*html*/`
         <div class="sidebar-toggle-menu d-md-none position-fixed top-0 p-3 w-100 d-flex align-items-center">
             <button class="btn btn-outline-light sidebar-toggle-button d-flex justify-content-center align-items-center" type="button" id="sidebar-toggle-btn" >
@@ -11,17 +14,17 @@ export function getSidebarHTML() {
         <nav class="col-12 d-none d-md-block sidebar pt-md-2 overflow-auto position-sticky" data-position="0">
             <div class="rounded-4 text-white" style="background-color: #331D1F;">
                 <!-- Organization Logo -->
-                <div class="p-3 d-flex justify-content-center d-none d-md-block">
+                <div class="p-3 d-md-flex justify-content-center d-none">
                     <img src="src/images/logo2.svg" alt="Organization Logo" class="img-fluid rounded">
                 </div>
 
                 <!-- User Profile -->
                 <div class="d-flex justify-content-between align-items-center p-2 m-2 bg-transparent rounded-4" style="border: 1px solid rgba(255, 255, 255, 0.05);">
                     <div class="d-flex align-items-center">
-                        <img src="src/images/profilepic.jpg" alt="User Profile" class="rounded-circle ms-2">
+                        <img src="${userData.profilePicture}" alt="User Profile" class="rounded-circle ms-2">
                         <div>
-                            <h6 class="mb-0">محمد جلال</h6>
-                            <small class="text-white-50">اخر تحديث 1/1/2025</small>
+                            <h6 class="mb-0">${userData.fullName}</h6>
+                            <small class="text-white-50">اخر تحديث ${new Date(userData.lastUpdate).toLocaleDateString()}</small>
                         </div>
                     </div>
                     <a href="signin.html" class=""><img src="src/images/logout.svg" alt="log out icon" class="img-fluid"></a>
