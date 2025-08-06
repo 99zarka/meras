@@ -10,6 +10,7 @@ import { getDetailsSectionHTML } from './components/detailsSectionComponent.js';
 import { lineChartLabels, lineChartValues } from './data/lineChartData.js';
 import { barChartLabels, barChartValues } from './data/barChartData.js';
 import { initializeThemeToggle } from './utils/applyTheme.js';
+import { initializeDashboardEventListeners } from './components/dashboard/dashboardEventListeners.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('sidebar-placeholder').innerHTML = getSidebarHTML();
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBarChart('myChart2', barChartLabels, barChartValues);
     updateDateTime();
     initializeThemeToggle();
+    initializeDashboardEventListeners();
 
     // Initialize Bootstrap popovers
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')

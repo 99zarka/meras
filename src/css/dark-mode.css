@@ -89,11 +89,11 @@ body.dark-mode .children-menu .child-link:hover {
     color: #ffffff;
 }
 
-body.dark-mode .grandchildren-menu .nav-item a {
+body.dark-mode .sidebar .grandchildren-menu .nav-item a {
     color: #c89ca0;
 }
 
-body.dark-mode .grandchildren-menu .nav-item:hover a {
+body.dark-mode .sidebar .grandchildren-menu .nav-item:hover a {
     color: #ffffff;
 }
 
@@ -128,4 +128,27 @@ body.dark-mode .icon-circle {
 
 body.dark-mode .dashboard-toggle {
     background-color: #211113;
+}
+
+body.dark-mode .dashboard-card {
+    background-color: #422326; /* Darker background for cards */
+    color: #b29595; /* Lighter text color */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Subtle dark shadow */
+}
+
+body.dark-mode .dashboard-card:hover {
+    background-color: #62363a; /* Even darker on hover */
+}
+
+body.dark-mode .dashboard-card.active {
+    background-color: #874b50; /* Active card background color */
+    color: #ffffff; /* Active card text color */
+}
+
+body.dark-mode .dashboard-card.active .dashboard-card-icon svg {
+    color: #f6efef; /* Active card icon color */
+}
+
+body.dark-mode .dashboard-card-icon svg {
+    color: #c8a78c; /* Icon color in dark mode */
 }

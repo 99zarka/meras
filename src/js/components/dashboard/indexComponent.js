@@ -3,7 +3,7 @@ import { logo3 } from '../../data/getSVG.js';
 
 export function getIndexHTML() {
     return /*html*/ `
-    <div class="row">
+    <div class="row w-100">
         <div class="col-12 col-md-2 mb-3 mb-md-0 d-flex flex-column align-items-center justify-content-center">
             <div class="img-fluid mb-2" style="max-height: 50px;">
                 ${logo3}

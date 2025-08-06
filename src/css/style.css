@@ -385,3 +385,47 @@ img:hover {
 .dashboard-toggle {
     background-color: #e7e7e7;
 }
+
+
+.dashboard-cards-container {
+    gap: 20px; /* Space between cards */
+    justify-content: center;
+    padding: 20px;
+}
+
+.dashboard-card {
+    background-color: #f6efef; /* Light background for cards */
+    text-decoration: none;
+    color: #331c1f; /* Dark text color */
+    font-size: large;
+    width: 107px; /* Fixed width for each card */
+    height: 100px; /* Fixed height for each card */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.dashboard-card:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+    transform: translateY(-5px);
+}
+
+.dashboard-card.active {
+    background-color: #874b50; /* Active card background color */
+    color: #ffffff; /* Active card text color */
+}
+
+.dashboard-card.active .dashboard-card-icon svg {
+    color: #f6efef; /* Active card icon color */
+}
+
+.dashboard-card-icon {
+    margin-bottom: 10px;
+}
+
+.dashboard-card-icon svg {
+    width: 30px;
+    height: 30px;
+    color: #874b50; /* Icon color */
+    transition: color 0.3s ease;
+}
+
