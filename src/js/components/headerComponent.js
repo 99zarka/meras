@@ -4,10 +4,20 @@ const firstName = getUserData().firstName;
 
 export function getHeaderHTML() {
     
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = urlParams.get('page');
+
+    let headerTitleHTML = '';
+    if (page) {
+        headerTitleHTML = `<h3 class="mb-0">مشروع: ${page}</h3>`;
+    } else {
+        headerTitleHTML = `<h3 class="mb-0">صباح الخير , ${firstName} 👋🏻</h3>`;
+    }
+
     return /*html*/`
         <div class="row flex-row mb-3 white-bg rounded-4 p-3 d-flex align-items-center justify-content-between">
             <div class="col-auto mx-auto" id="header-title">
-                <h3 class="mb-0">صباح الخير , ${firstName} 👋🏻</h3>
+                ${headerTitleHTML}
             </div>
             <div class="col d-flex align-items-center justify-content-end" id="searchBoxContainer">
                 <!-- Search Box Container -->

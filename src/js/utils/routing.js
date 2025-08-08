@@ -12,7 +12,7 @@ export function initializeRouting(){
         const contentSection = document.getElementById('content-section-placeholder');
         const generalLook = document.getElementById('general-look-placeholder');
 
-        if (page == 'myproject') {
+        if (page) {
                 contentSection.classList.toggle('d-block', true);
                 generalLook.classList.toggle('d-none', true);
         }
