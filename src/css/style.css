@@ -376,7 +376,7 @@ img:hover {
     display: none;
     }
     #searchBox{
-        max-width: 50px;
+        max-width: 40px;
         min-width: 0px;
         transition: max-width 0.3s ease, min-width 0.3s ease; /* Add transition for max-width */
     }
