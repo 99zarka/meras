@@ -25,7 +25,7 @@ export function getDashboardComponentHTML() {
 
     return /*html*/`
         <div class="dashboard-component mb-5">
-            <ul class="dashboard-cards-container d-flex flex-wrap justify-content-around align-items-center">
+            <ul class="dashboard-cards-container d-flex flex-wrap justify-content-between align-items-center">
                 ${dashboardCardsHTML}
             </ul>
         </div>

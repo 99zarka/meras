@@ -107,6 +107,10 @@ body {
     color: #b67c80; 
 }
 
+.header-placeholder{
+    top: 8px;
+}
+
 #header-title h3 {
     color: #291a2d;
 }
@@ -356,6 +360,14 @@ img:hover {
         top: 200px;
         overflow-x: hidden;
         left: 0;
+    }
+
+    .header-placeholder{
+        top: 80px;
+        z-index: 990;
+    }
+
+    #header-title h3 {
     }
 }
 
