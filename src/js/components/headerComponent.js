@@ -20,12 +20,14 @@ export function getHeaderHTML() {
             <div class="col d-flex align-items-center justify-content-end" id="searchBoxContainer">
                 <!-- Search Box Container -->
                 <!-- Removed input-group and button, added relative positioning container -->
-                <div class="rounded-2 me-3" style="max-width: 300px; width: 100%;" id="searchBox">
+                <form class="rounded-2 me-3" id="searchBox" action="#">
                     <!-- Added ps-4 for padding-left to make space for the icon -->
-                    <i class="bi bi-search position-absolute top-50 translate-middle-y text-muted" style="left: 1rem; pointer-events: none;"></i>
-                    <input type="text" class="form-control bg-transparent" placeholder="بحث..." aria-label="Search">
+                    <button type="submit" class="btn position-absolute top-50 translate-middle-y" style="left: 0rem; background: none; border: none; padding: 0;">
+                        <i class="bi bi-search text-muted"></i>
+                    </button>
+                    <input type="text" name="term" class="form-control bg-transparent" placeholder="بحث..." aria-label="Search" required>
                     <span class="shortcut-hint">/ ⌘</span>
-                </div>
+                </form>
                 <!-- Notification Icon Button -->
                 <button class="btn rounded-2 border-0 mx-3 d-flex align-items-center justify-content-center" aria-label="Notifications">
                     <i class="bi bi-bell-fill fs-5"></i>

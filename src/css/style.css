@@ -129,7 +129,9 @@ body {
     display: flex;
     align-items: center;
     padding-right: 1rem;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, max-width 0.3s ease;
+    max-width: 300px;
+    width: 100%;
 }
 
 #searchBox:hover {
@@ -367,7 +369,33 @@ img:hover {
         z-index: 990;
     }
 
-    #header-title h3 {
+    .header-placeholder h3 {
+        font-size: 16px;
+    }
+    #searchBox .shortcut-hint {
+    display: none;
+    }
+    #searchBox{
+        max-width: 50px;
+        min-width: 0px;
+        transition: max-width 0.3s ease, min-width 0.3s ease; /* Add transition for max-width */
+    }
+
+    #searchBox button{
+        pointer-events: none;
+    }
+
+    #searchBox:focus-within{
+        max-width: 300px;
+        min-width: 200px;
+    }
+
+    #searchBox:focus-within button{ 
+        pointer-events: auto;
+    }
+
+    #searchBox:focus-within input[type="text"]{ 
+        width: 100%;
     }
 }
 
@@ -445,4 +473,3 @@ img:hover {
     color: #874b50; /* Icon color */
     transition: color 0.3s ease;
 }
-
