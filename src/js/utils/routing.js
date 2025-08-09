@@ -10,15 +10,19 @@ export function initializeRouting(){
         
 
         const contentSection = document.getElementById('content-section-placeholder');
+        const detailsSection = document.getElementById('details-section-placeholder');
         const generalLook = document.getElementById('general-look-placeholder');
+
 
         if (page) {
                 contentSection.classList.toggle('d-block', true);
+                detailsSection.classList.toggle('d-block', true);
                 generalLook.classList.toggle('d-none', true);
         }
         else {
             // Default behavior if page is not 'myproject' or not present
                 contentSection.classList.toggle('d-none', true);
+                detailsSection.classList.toggle('d-none', true);
                 generalLook.classList.toggle('d-block', true);
         }
 }

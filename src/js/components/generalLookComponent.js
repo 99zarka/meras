@@ -8,8 +8,7 @@ export function getGeneralLookHTML() {
 
     return /*html*/`
         <!-- Content Section -->
-        <div class="row mb-3 vh-100">
-            <div class="col-12 bg-white rounded-4 p-0">
+
 
                 <div class="row p-3 my-3">
                     <div class="col-12 col-lg-6">
@@ -45,7 +44,6 @@ export function getGeneralLookHTML() {
                     </div>
                 </div>
 
-            </div>
-        </div>
+
     `;
 }

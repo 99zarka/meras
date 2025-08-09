@@ -1,14 +1,24 @@
 const applyTheme = () => {
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const icon = darkModeToggle.querySelector('i');
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        icon.classList.remove('bi-sun');
-        icon.classList.add('bi-moon');
-    } else {
-        document.body.classList.remove('dark-mode');
-        icon.classList.remove('bi-moon');
-        icon.classList.add('bi-sun');
+    if(darkModeToggle){
+        const icon = darkModeToggle.querySelector('i');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            icon.classList.remove('bi-sun');
+            icon.classList.add('bi-moon');
+        } else {
+            document.body.classList.remove('dark-mode');
+            icon.classList.remove('bi-moon');
+            icon.classList.add('bi-sun');
+        }
+    }
+    else{
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+
+        }
     }
 };
 
